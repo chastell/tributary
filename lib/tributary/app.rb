@@ -4,4 +4,8 @@ module Tributary class App < Sinatra::Base
     haml :index
   end
 
+  get '/about' do
+    haml :page
+  end
+
 end end

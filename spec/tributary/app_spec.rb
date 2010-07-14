@@ -15,4 +15,10 @@ module Tributary describe App do
     last_response.body.should include 'a tributary index'
   end
 
+  it 'renders the relevant, path-based view' do
+    get '/about'
+    last_response.should be_ok
+    last_response.body.should include 'a tributary page'
+  end
+
 end end
