@@ -5,11 +5,8 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/:path' do |path|
-    view = case path
-           when 'about'   then :page
-           when 'welcome' then :article
-           end
-    haml view
+    item = Stream.pick_item path
+    haml item.view
   end
 
 end end
