@@ -19,6 +19,9 @@ module Tributary describe App do
     get '/about'
     last_response.should be_ok
     last_response.body.should include 'a tributary page'
+    get '/welcome'
+    last_response.should be_ok
+    last_response.body.should include 'a tributary article'
   end
 
 end end
