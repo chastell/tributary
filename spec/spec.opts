@@ -1,2 +1,4 @@
 --colour
 --diff unified
+--require rack/test
+--require lib/tributary
