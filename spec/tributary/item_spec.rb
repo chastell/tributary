@@ -29,6 +29,22 @@ module Tributary describe Item do
 
   end
 
+  context '#eql?' do
+
+    it 'returns predicate for sane use of Items as Hash keys' do
+      @about.should be_eql Item.new('spec/fixtures/page/about.md')
+    end
+
+  end
+
+  context '#hash' do
+
+    it 'returns static value for sane use of Items as Hash keys' do
+      @about.hash.should == Item.new('spec/fixtures/page/about.md').hash
+    end
+
+  end
+
   context '#path' do
 
     it 'returns the given Item’s path' do

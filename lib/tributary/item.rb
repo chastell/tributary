@@ -18,6 +18,12 @@ module Tributary class Item < OpenStruct
     end
   end
 
+  alias eql? ==
+
+  def hash
+    @file.hash
+  end
+
   def path
     File.basename @file, '.md'
   end
