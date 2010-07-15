@@ -1,12 +1,9 @@
-module Tributary class Item
-
-  attr_reader :date, :title
+module Tributary class Item < OpenStruct
 
   def initialize file
     @file = file
     yaml, @body = File.read(@file).split "\n\n", 2
-    @date  = YAML.load(yaml)['date']
-    @title = YAML.load(yaml)['title']
+    super YAML.load yaml
   end
 
   def body
