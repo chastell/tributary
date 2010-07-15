@@ -5,8 +5,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/:path' do |path|
-    Stream.root = settings.root
-    item = Stream.pick_item path
+    item = Stream.pick_item settings.root, path
     haml item.view, locals: {item: item}
   end
 
