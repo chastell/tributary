@@ -5,12 +5,12 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/' do
-    haml :index
+    haml :index, locals: {sitename: settings.sitename}
   end
 
   get '/:path' do |path|
     item = @stream.pick_item path
-    haml item.view, locals: {item: item}
+    haml item.view, locals: {item: item, sitename: settings.sitename}
   end
 
 end end

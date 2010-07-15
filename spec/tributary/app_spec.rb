@@ -1,10 +1,13 @@
+# encoding: UTF-8
+
 module Tributary describe App do
 
   include Rack::Test::Methods
 
   def app
     App.configure do |config|
-      config.set :root, 'spec/fixtures'
+      config.set :root,     'spec/fixtures'
+      config.set :sitename, 'a tributary site'
     end
     App
   end
@@ -25,6 +28,12 @@ module Tributary describe App do
     last_response.should be_ok
     last_response.body.should include 'a tributary article'
     last_response.body.should include 'tributary <em>welcome</em> article'
+  end
+
+  it 'exposes sitename to views' do
+    get '/'
+    last_response.should be_ok
+    last_response.body.should include '<title>a tributary site</title>'
   end
 
 end end
