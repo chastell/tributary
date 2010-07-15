@@ -4,6 +4,7 @@ module Tributary describe Item do
 
   before :all do
     @about   = Item.new 'spec/fixtures/page/about.md'
+    @battle  = Item.new 'spec/fixtures/article/600.md'
     @welcome = Item.new 'spec/fixtures/article/welcome.md'
   end
 
@@ -18,9 +19,10 @@ module Tributary describe Item do
 
   context '#date' do
 
-    it 'returns the given Item’s parsed date' do
+    it 'returns the given Item’s parsed Time' do
       @about.date.should   == nil
-      @welcome.date.should == Date.new(2010, 7, 15)
+      @battle.date.should  == Time.mktime(2010, 7, 15, 12, 00)
+      @welcome.date.should == Time.mktime(2010, 7, 15)
     end
 
   end
