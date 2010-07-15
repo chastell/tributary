@@ -26,7 +26,7 @@ module Tributary class Item < OpenStruct
   end
 
   def view
-    @file.split('/').reverse[1].to_sym
+    File.dirname(@file).split('/').last.to_sym
   end
 
 end end
