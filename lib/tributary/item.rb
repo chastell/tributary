@@ -5,7 +5,7 @@ module Tributary class Item
   end
 
   def body
-    File.read @file
+    Kramdown::Document.new(File.read @file).to_html
   end
 
   def view

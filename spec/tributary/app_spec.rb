@@ -19,12 +19,12 @@ module Tributary describe App do
     get '/about'
     last_response.should be_ok
     last_response.body.should include 'a tributary page'
-    last_response.body.should include 'tributary about page'
+    last_response.body.should include 'tributary <em>about</em> page'
 
     get '/welcome'
     last_response.should be_ok
     last_response.body.should include 'a tributary article'
-    last_response.body.should include 'tributary welcome article'
+    last_response.body.should include 'tributary <em>welcome</em> article'
   end
 
 end end
