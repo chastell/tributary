@@ -4,6 +4,10 @@ module Tributary class Item
     @file = file
   end
 
+  def body
+    File.read @file
+  end
+
   def view
     @file.split('/').reverse[1].to_sym
   end
