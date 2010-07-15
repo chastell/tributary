@@ -2,10 +2,10 @@
 %html{lang: 'en'}
   %head
     %meta{charset: 'UTF-8'}
-    %title= item.title or sitename
+    %title= item.title or settings.sitename
   %body
     %p
-      %a{href: '/'}= sitename
+      %a{href: '/'}= settings.sitename
     = yield
     %p
       %a{href: 'about'} designed by chastell in Mazovia

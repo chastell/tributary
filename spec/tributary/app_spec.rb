@@ -30,7 +30,7 @@ module Tributary describe App do
     last_response.body.should include 'tributary <em>welcome</em> article'
   end
 
-  it 'exposes sitename to views' do
+  it 'exposes settings to views' do
     get '/'
     last_response.should be_ok
     last_response.body.should include '<title>a tributary site</title>'
