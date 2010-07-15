@@ -1,10 +1,11 @@
 module Tributary class Item
 
-  attr_reader :title
+  attr_reader :date, :title
 
   def initialize file
     @file = file
     yaml, @body = File.read(@file).split "\n\n", 2
+    @date  = YAML.load(yaml)['date']
     @title = YAML.load(yaml)['title']
   end
 

@@ -16,6 +16,15 @@ module Tributary describe Item do
 
   end
 
+  context '#date' do
+
+    it 'returns the given Item’s parsed date' do
+      @about.date.should   == nil
+      @welcome.date.should == Date.new(2010, 7, 15)
+    end
+
+  end
+
   context '#title' do
 
     it 'returns the given Item’s YAML-specified title' do
