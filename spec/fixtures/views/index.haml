@@ -1,1 +1,6 @@
 %p a tributary index
+%p recent items:
+%ul
+  - recent.each do |item|
+    %li
+      %a{href: item.path}= item.title
