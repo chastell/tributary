@@ -17,6 +17,10 @@ module Tributary class Item < OpenStruct
     end
   end
 
+  def published?
+    date and date < Time.now
+  end
+
   def view
     @file.split('/').reverse[1].to_sym
   end
