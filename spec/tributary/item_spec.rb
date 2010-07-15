@@ -10,7 +10,7 @@ module Tributary describe Item do
   context '#body' do
 
     it 'returns the given Item’s markdown-processed body' do
-      @about.body.should   == "<p>tributary <em>about</em> page</p>\n"
+      @about.body.should   == "<p>tributary <em>about</em> page</p>\n\n<p>about this tributary install</p>\n"
       @welcome.body.should == "<p>tributary <em>welcome</em> article</p>\n"
     end
 

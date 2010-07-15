@@ -4,7 +4,7 @@ module Tributary class Item
 
   def initialize file
     @file = file
-    @title, @body = File.read(@file).split "\n\n"
+    @title, @body = File.read(@file).split "\n\n", 2
     @title = @title[7..-1]
   end
 
