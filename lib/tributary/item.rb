@@ -14,6 +14,7 @@ module Tributary class Item < OpenStruct
     case @table[:date]
     when Date   then @table[:date].to_time
     when String then Time.parse @table[:date]
+    when Time   then @table[:date]
     end
   end
 

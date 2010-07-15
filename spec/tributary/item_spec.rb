@@ -23,6 +23,7 @@ module Tributary describe Item do
     it 'returns the given Item’s parsed Time' do
       @about.date.should   == nil
       @battle.date.should  == Time.mktime(2010, 7, 15, 12, 00)
+      @unix.date.should    == Time.utc(2038, 1, 19,  3, 14, 07)
       @welcome.date.should == Time.mktime(2010, 7, 15)
     end
 
