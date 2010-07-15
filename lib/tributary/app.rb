@@ -5,7 +5,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/' do
-    haml :index, locals: {sitename: settings.sitename}
+    haml :index, locals: {item: OpenStruct.new, sitename: settings.sitename}
   end
 
   get '/:path' do |path|
