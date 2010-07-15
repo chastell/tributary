@@ -36,8 +36,12 @@ module Tributary describe App do
     last_response.body.should include '<title>a tributary site</title>'
   end
 
-  it 'exposes recent items to views' do
+  it 'exposes Stream to views' do
     get '/'
+    last_response.should be_ok
+    last_response.body.should include 'welcome to tributary'
+
+    get '/600'
     last_response.should be_ok
     last_response.body.should include 'welcome to tributary'
   end

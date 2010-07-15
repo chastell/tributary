@@ -15,7 +15,7 @@ module Tributary class App < Sinatra::Base
   private
 
   def render_item item
-    haml item.view, locals: {item: item, recent: @stream.recent}
+    haml item.view, locals: {item: item, stream: @stream}
   end
 
 end end

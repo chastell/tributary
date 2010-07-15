@@ -7,5 +7,9 @@
     %p
       %a{href: '/'}= settings.sitename
     = yield
+    - if previous = stream.previous(item)
+      %p
+        previously:
+        %a{href: previous.path}= previous.title
     %p
       %a{href: 'about'} designed by chastell in Mazovia
