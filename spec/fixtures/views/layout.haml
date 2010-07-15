@@ -4,4 +4,8 @@
     %meta{charset: 'UTF-8'}
     %title= item.title or sitename
   %body
+    %p
+      %a{href: '/'}= sitename
     = yield
+    %p
+      %a{href: 'about'} designed by chastell in Mazovia
