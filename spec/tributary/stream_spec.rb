@@ -7,10 +7,8 @@ module Tributary describe Stream do
   context '.pick_item' do
 
     it 'returns the relevant Item based on the provided path' do
-      Item.should_receive(:new).with 'spec/fixtures/page/about.md'
-      Stream.pick_item 'about'
-      Item.should_receive(:new).with 'spec/fixtures/article/welcome.md'
-      Stream.pick_item 'welcome'
+      Stream.pick_item('about').should   == Item.new('spec/fixtures/page/about.md')
+      Stream.pick_item('welcome').should == Item.new('spec/fixtures/article/welcome.md')
     end
 
   end
