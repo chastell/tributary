@@ -1,15 +1,15 @@
 module Tributary class Stream
 
   def initialize root
-    @root = root
+    @items = Dir["#{root}/*/*.md"].map { |file| Item.new file }
   end
 
   def pick_item path
-    Item.new Dir["#{@root}/*/#{path}.md"].first
+    @items.find { |item| item.path == path }
   end
 
   def recent
-    Dir["#{@root}/*/*.md"].map { |file| Item.new file }.select(&:published?).sort_by(&:date).reverse
+    @items.select(&:published?).sort_by(&:date).reverse
   end
 
 end end
