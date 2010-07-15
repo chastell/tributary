@@ -17,6 +17,15 @@ module Tributary describe Stream do
 
   end
 
+  context '#previous' do
+
+    it 'returns an Item previous to the given Item' do
+      @stream.previous(@battle).should == @welcome
+      @stream.previous(@about).should  == nil
+    end
+
+  end
+
   context '#recent' do
 
     it 'returns published Items, newest-first' do
