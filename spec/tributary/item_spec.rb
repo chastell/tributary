@@ -28,6 +28,15 @@ module Tributary describe Item do
 
   end
 
+  context '#path' do
+
+    it 'returns the given Item’s path' do
+      @about.path.should  == 'about'
+      @battle.path.should == '600'
+    end
+
+  end
+
   context '#published?' do
 
     it 'returns whether the given Item has a date in the past' do

@@ -17,6 +17,10 @@ module Tributary class Item < OpenStruct
     end
   end
 
+  def path
+    File.basename @file, '.md'
+  end
+
   def published?
     date and date < Time.now
   end
