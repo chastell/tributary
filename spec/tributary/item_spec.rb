@@ -16,6 +16,15 @@ module Tributary describe Item do
 
   end
 
+  context '#title' do
+
+    it 'returns the given Item’s YAML-specified title' do
+      @about.title.should   == 'about tributary'
+      @welcome.title.should == 'welcome to tributary'
+    end
+
+  end
+
   context '#view' do
 
     it 'returns the given Item’s view' do
