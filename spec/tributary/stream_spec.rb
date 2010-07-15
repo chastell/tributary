@@ -9,4 +9,15 @@ module Tributary describe Stream do
 
   end
 
+  context '.recent' do
+
+    it 'returns published Items, newest-first' do
+      Stream.recent('spec/fixtures').should == [
+        Item.new('spec/fixtures/article/600.md'),
+        Item.new('spec/fixtures/article/welcome.md'),
+      ]
+    end
+
+  end
+
 end end
