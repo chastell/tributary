@@ -12,5 +12,9 @@
       %p
         previously:
         %a{href: previous.path}= previous.title
+    - if subsequent = @stream.next(@item)
+      %p
+        subsequently:
+        %a{href: subsequent.path}= subsequent.title
     %p
       %a{href: 'about'} designed by chastell in Mazovia

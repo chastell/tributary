@@ -8,6 +8,15 @@ module Tributary describe Stream do
     @stream  = Stream.new 'spec/fixtures'
   end
 
+  context '#next' do
+
+    it 'returns an Item next to the given Item' do
+      @stream.next(@welcome).should == @battle
+      @stream.next(@about).should   == nil
+    end
+
+  end
+
   context '#pick_item' do
 
     it 'returns the relevant Item based on the provided path' do
