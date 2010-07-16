@@ -48,4 +48,11 @@ module Tributary describe App do
     last_response.body.should include 'welcome to tributary'
   end
 
+  it 'renders the Atom feed' do
+    get '/feed'
+    last_response.should be_ok
+    last_response.headers['Content-Type'].should == 'application/atom+xml'
+    last_response.body.should == File.read('spec/fixtures/feed.xml')
+  end
+
 end end

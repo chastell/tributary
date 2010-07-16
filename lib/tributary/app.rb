@@ -9,6 +9,11 @@ module Tributary class App < Sinatra::Base
     haml :index
   end
 
+  get '/feed' do
+    response['Content-Type'] = 'application/atom+xml'
+    haml :feed, layout: false
+  end
+
   get '/:path' do |path|
     @item = @stream.pick_item path
     haml @item.view
