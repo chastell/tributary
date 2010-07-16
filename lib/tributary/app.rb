@@ -10,7 +10,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/feed' do
-    response['Content-Type'] = 'application/atom+xml'
+    content_type 'application/atom+xml'
     haml :feed, layout: false
   end
 
