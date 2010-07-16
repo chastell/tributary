@@ -13,8 +13,8 @@ module Tributary class Stream
     @previous[item]
   end
 
-  def recent
-    @items.select(&:published?).sort_by(&:date).reverse
+  def recent limit = @items.size
+    @items.select(&:published?).sort_by(&:date).reverse.take limit
   end
 
 end end

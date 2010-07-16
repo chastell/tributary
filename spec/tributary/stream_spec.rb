@@ -32,6 +32,10 @@ module Tributary describe Stream do
       @stream.recent.should == [@battle, @welcome]
     end
 
+    it 'returns a limited number of newest Items' do
+      @stream.recent(1).should == [@battle]
+    end
+
   end
 
 end end
