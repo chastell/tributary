@@ -5,17 +5,13 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/' do
-    render_item OpenStruct.new view: :index
+    @item = OpenStruct.new
+    haml :index
   end
 
   get '/:path' do |path|
-    render_item @stream.pick_item path
-  end
-
-  private
-
-  def render_item item
-    haml item.view, locals: {item: item, stream: @stream}
+    @item = @stream.pick_item path
+    haml @item.view
   end
 
 end end

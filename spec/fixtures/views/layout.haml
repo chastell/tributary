@@ -2,12 +2,12 @@
 %html{lang: 'en'}
   %head
     %meta{charset: 'UTF-8'}
-    %title= item.title or settings.sitename
+    %title= @item.title or settings.sitename
   %body
     %p
       %a{href: '/'}= settings.sitename
     = yield
-    - if previous = stream.previous(item)
+    - if previous = @stream.previous(@item)
       %p
         previously:
         %a{href: previous.path}= previous.title
