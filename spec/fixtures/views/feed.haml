@@ -8,7 +8,7 @@
   %link{href: settings.url + 'feed', rel: 'self'}
   %title&= settings.sitename
   %updated= @stream.recent.first.date.iso8601
-  - @stream.recent.each do |item|
+  - @stream.recent(7).each do |item|
     %entry
       %id= settings.url + item.path
       %link{href: settings.url + item.path, rel: 'alternate'}
