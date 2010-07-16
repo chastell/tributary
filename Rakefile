@@ -13,6 +13,7 @@ Jeweler::Tasks.new do |gem|
   gem.name     = 'tributary'
   gem.summary  = 'tributary: a tiny, toto-inspired blogging engine'
 
+  gem.add_dependency 'haml'
   gem.add_dependency 'kramdown'
   gem.add_dependency 'sinatra'
 
