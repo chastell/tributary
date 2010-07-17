@@ -56,10 +56,10 @@ module Tributary describe App do
   end
 
   it 'renders the CSS stylesheet' do
-    get '/style.css'
+    get '/layout.css'
     last_response.should be_ok
     last_response.headers['Content-Type'].should == 'text/css'
-    last_response.body.should == File.read('spec/fixtures/style.css')
+    last_response.body.should == File.read('spec/fixtures/layout.css')
   end
 
   it 'renders per-view CSS stylesheets' do
