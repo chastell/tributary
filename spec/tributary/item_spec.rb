@@ -3,11 +3,11 @@
 module Tributary describe Item do
 
   before :all do
-    @about   = Item.new 'spec/fixtures/page/about.md'
-    @battle  = Item.new 'spec/fixtures/article/600.md'
-    @beep    = Item.new 'spec/fixtures/beep/beep.md'
-    @unix    = Item.new 'spec/fixtures/article/unix-millennium-bug.md'
-    @welcome = Item.new 'spec/fixtures/article/welcome.md'
+    @about   = Item.new 'spec/fixtures/pages/about.md'
+    @battle  = Item.new 'spec/fixtures/articles/600.md'
+    @beep    = Item.new 'spec/fixtures/beeps/beep.md'
+    @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
+    @welcome = Item.new 'spec/fixtures/articles/welcome.md'
   end
 
   context '#body' do
@@ -33,7 +33,7 @@ module Tributary describe Item do
   context '#eql?' do
 
     it 'returns predicate for sane use of Items as Hash keys' do
-      @about.should be_eql Item.new('spec/fixtures/page/about.md')
+      @about.should be_eql Item.new('spec/fixtures/pages/about.md')
     end
 
   end
@@ -41,7 +41,7 @@ module Tributary describe Item do
   context '#hash' do
 
     it 'returns static value for sane use of Items as Hash keys' do
-      @about.hash.should == Item.new('spec/fixtures/page/about.md').hash
+      @about.hash.should == Item.new('spec/fixtures/pages/about.md').hash
     end
 
   end
@@ -82,8 +82,8 @@ module Tributary describe Item do
   context '#view' do
 
     it 'returns the given Item’s view' do
-      @about.view.should   == :page
-      @welcome.view.should == :article
+      @about.view.should   == :pages
+      @welcome.view.should == :articles
     end
 
   end
