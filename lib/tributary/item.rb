@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Tributary class Item < OpenStruct
 
   def initialize file
@@ -30,6 +32,10 @@ module Tributary class Item < OpenStruct
 
   def published?
     date and date < Time.now
+  end
+
+  def title
+    @table[:title] or @body.split.first + '…'
   end
 
   def view
