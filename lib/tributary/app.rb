@@ -14,6 +14,11 @@ module Tributary class App < Sinatra::Base
     haml :feed, layout: false
   end
 
+  get '/style' do
+    content_type 'text/css'
+    sass :style
+  end
+
   get '/:path' do |path|
     @item = @stream.pick_item path
     haml @item.view
