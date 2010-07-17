@@ -62,4 +62,11 @@ module Tributary describe App do
     last_response.body.should == File.read('spec/fixtures/style.css')
   end
 
+  it 'renders per-view CSS stylesheets' do
+    get '/pages.css'
+    last_response.should be_ok
+    last_response.headers['Content-Type'].should == 'text/css'
+    last_response.body.should == File.read('spec/fixtures/pages.css')
+  end
+
 end end

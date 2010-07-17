@@ -14,9 +14,9 @@ module Tributary class App < Sinatra::Base
     haml :feed, layout: false
   end
 
-  get '/style.css' do
+  get '/:style.css' do |style|
     content_type 'text/css'
-    sass :style
+    sass style.to_sym
   end
 
   get '/:path' do |path|
