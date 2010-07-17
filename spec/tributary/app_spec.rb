@@ -32,6 +32,12 @@ module Tributary describe App do
     last_response.body.should include 'tributary <em>welcome</em> article'
   end
 
+  it 'sets /’s view to :index' do
+    get '/'
+    last_response.should be_ok
+    last_response.body.should include 'index.css'
+  end
+
   it 'exposes settings to views' do
     get '/'
     last_response.should be_ok

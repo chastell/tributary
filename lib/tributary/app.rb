@@ -5,8 +5,8 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/' do
-    @item = OpenStruct.new
-    haml :index
+    @item = OpenStruct.new view: :index
+    haml @item.view
   end
 
   get '/feed.xml' do
