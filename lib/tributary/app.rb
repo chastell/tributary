@@ -9,12 +9,12 @@ module Tributary class App < Sinatra::Base
     haml :index
   end
 
-  get '/feed' do
+  get '/feed.xml' do
     content_type 'application/atom+xml'
     haml :feed, layout: false
   end
 
-  get '/style' do
+  get '/style.css' do
     content_type 'text/css'
     sass :style
   end
