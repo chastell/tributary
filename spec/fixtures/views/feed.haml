@@ -5,7 +5,7 @@
   %generator{uri: 'http://github.com/chastell/tributary'} tributary
   %id= settings.url
   %link{href: settings.url, rel: 'alternate'}
-  %link{href: settings.url + 'feed', rel: 'self'}
+  %link{href: settings.url + 'feed.xml', rel: 'self'}
   %title&= settings.sitename
   %updated= @stream.recent.first.date.iso8601
   - @stream.recent(7).each do |item|

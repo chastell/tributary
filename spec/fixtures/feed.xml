@@ -6,7 +6,7 @@
   <generator uri='http://github.com/chastell/tributary'>tributary</generator>
   <id>http://tributary.example.net/</id>
   <link href='http://tributary.example.net/' rel='alternate' />
-  <link href='http://tributary.example.net/feed' rel='self' />
+  <link href='http://tributary.example.net/feed.xml' rel='self' />
   <title>a tributary site</title>
   <updated>2010-07-15T12:00:00+02:00</updated>
   <entry>
