@@ -9,7 +9,6 @@ module Tributary describe App do
       config.set :author,   'Ary Tribut'
       config.set :root,     'spec/fixtures'
       config.set :sitename, 'a tributary site'
-      config.set :url,      'http://tributary.example.net/'
     end
     App
   end

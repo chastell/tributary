@@ -4,14 +4,14 @@
     <name>Ary Tribut</name>
   </author>
   <generator uri='http://github.com/chastell/tributary'>tributary</generator>
-  <id>http://tributary.example.net/</id>
-  <link href='http://tributary.example.net/' rel='alternate' />
-  <link href='http://tributary.example.net/feed.xml' rel='self' />
+  <id>example.org</id>
+  <link href='http://example.org:80/' rel='alternate' />
+  <link href='http://example.org:80/feed.xml' rel='self' />
   <title>a tributary site</title>
   <updated>2010-07-15T12:00:00+02:00</updated>
   <entry>
-    <id>http://tributary.example.net/600</id>
-    <link href='http://tributary.example.net/600' rel='alternate' />
+    <id>example.org/600</id>
+    <link href='http://example.org:80/600' rel='alternate' />
     <title>600th anniversary</title>
     <updated>2010-07-15T12:00:00+02:00</updated>
     <content type='html'>
@@ -20,8 +20,8 @@
     </content>
   </entry>
   <entry>
-    <id>http://tributary.example.net/welcome</id>
-    <link href='http://tributary.example.net/welcome' rel='alternate' />
+    <id>example.org/welcome</id>
+    <link href='http://example.org:80/welcome' rel='alternate' />
     <title>welcome to tributary</title>
     <updated>2010-07-15T00:00:00+02:00</updated>
     <content type='html'>&lt;p&gt;tributary &lt;em&gt;welcome&lt;/em&gt; article&lt;/p&gt;</content>
