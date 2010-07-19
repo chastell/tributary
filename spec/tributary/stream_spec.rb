@@ -3,6 +3,8 @@ module Tributary describe Stream do
   before :all do
     @about   = Item.new 'spec/fixtures/pages/about.md'
     @battle  = Item.new 'spec/fixtures/articles/600.md'
+    @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
+    @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
     @welcome = Item.new 'spec/fixtures/articles/welcome.md'
     @stream  = Stream.new 'spec/fixtures'
@@ -11,8 +13,10 @@ module Tributary describe Stream do
   context '#pick_item' do
 
     it 'returns the relevant Item based on the provided path' do
-      @stream.pick_item('about').should   == @about
-      @stream.pick_item('welcome').should == @welcome
+      @stream.pick_item('about').should        == @about
+      @stream.pick_item('welcome').should      == @welcome
+      @stream.pick_item('bilingual.en').should == @bi_en
+      @stream.pick_item('bilingual.pl').should == @bi_pl
     end
 
   end

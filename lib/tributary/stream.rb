@@ -7,7 +7,8 @@ module Tributary class Stream
   end
 
   def pick_item path
-    @items.find { |item| item.path == path }
+    path, lang = path.split '.'
+    @items.find { |item| item.path == path and item.lang == lang }
   end
 
   def previous item
