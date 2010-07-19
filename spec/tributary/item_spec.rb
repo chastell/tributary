@@ -4,7 +4,7 @@ module Tributary describe Item do
 
   before :all do
     @about   = Item.new 'spec/fixtures/pages/about.md'
-    @battle  = Item.new 'spec/fixtures/articles/600.md'
+    @battle  = Item.new 'spec/fixtures/articles/600.en.md'
     @beep    = Item.new 'spec/fixtures/beeps/beep.md'
     @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
