@@ -14,7 +14,7 @@
       %p
         previously:
         %a{href: previous.path}= previous.title
-    - if subsequent = @stream.next(@item)
+    - if subsequent = @stream.subsequent(@item)
       %p
         subsequently:
         %a{href: subsequent.path}= subsequent.title
