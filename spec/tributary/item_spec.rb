@@ -48,6 +48,16 @@ module Tributary describe Item do
 
   end
 
+  context '#lang' do
+
+    it 'returns the Item’s language (if defined)' do
+      @about.lang.should == nil
+      @bi_en.lang.should == 'en'
+      @bi_pl.lang.should == 'pl'
+    end
+
+  end
+
   context '#path' do
 
     it 'returns the given Item’s path' do

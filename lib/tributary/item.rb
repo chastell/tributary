@@ -26,6 +26,10 @@ module Tributary class Item < OpenStruct
     @file.hash
   end
 
+  def lang
+    File.basename(@file, '.md').split('.')[1]
+  end
+
   def path
     File.basename(@file, '.md').split('.').first
   end
