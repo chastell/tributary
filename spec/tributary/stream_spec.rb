@@ -63,6 +63,16 @@ module Tributary describe Stream do
       App.lang = nil
     end
 
+    it 'returns lang_limited Items (if requested)' do
+      App.lang_limit = ['en']
+      Stream.new.recent.should == [@battle, @bi_en, @welcome]
+      App.lang_limit = ['pl']
+      Stream.new.recent.should == [@bi_pl, @welcome]
+      App.lang_limit = []
+      Stream.new.recent.should == [@battle, @bi_en, @welcome]
+      App.lang_limit = nil
+    end
+
     it 'returns a limited number of newest Items' do
       @stream.recent(1).should == [@battle]
     end

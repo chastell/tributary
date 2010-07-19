@@ -5,6 +5,7 @@ module Tributary class Stream
     @items      = @all_items.select { |item| item.lang == App.lang }
     @items     += @all_items.select { |item| item.lang.nil? }
     @items     += @all_items
+    @items.delete_if { |item| item.lang and not App.lang_limit.include? item.lang } if App.lang_limit and not App.lang_limit.empty?
     @items      = @items.uniq.select { |item| item == @items.find { |i| i.path == item.path } }
     @previous   = Hash[recent.each_cons(2).to_a]
     @subsequent = Hash[recent.reverse.each_cons(2).to_a]
