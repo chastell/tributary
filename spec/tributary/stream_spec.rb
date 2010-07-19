@@ -9,7 +9,12 @@ module Tributary describe Stream do
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
     @welcome = Item.new 'spec/fixtures/articles/welcome.md'
-    @stream  = Stream.new
+  end
+
+  before :each do
+    App.lang       = nil
+    App.lang_limit = nil
+    @stream = Stream.new
   end
 
   context '#pick_item' do
@@ -60,7 +65,6 @@ module Tributary describe Stream do
     it 'returns properly localised Items (if available)' do
       App.lang = 'pl'
       Stream.new.recent.should == [@battle, @bi_pl, @welcome]
-      App.lang = nil
     end
 
     it 'returns lang_limited Items (if requested)' do
@@ -70,7 +74,6 @@ module Tributary describe Stream do
       Stream.new.recent.should == [@bi_pl, @welcome]
       App.lang_limit = []
       Stream.new.recent.should == [@battle, @bi_en, @welcome]
-      App.lang_limit = nil
     end
 
     it 'returns a limited number of newest Items' do
