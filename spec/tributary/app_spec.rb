@@ -74,8 +74,9 @@ module Tributary describe App do
     last_response.body.should == File.read('spec/fixtures/pages.css')
   end
 
-  it 'defaults to nil lang' do
-    App.lang.should == nil
+  it 'defaults to nil lang and lang_limit' do
+    App.lang.should       == nil
+    App.lang_limit.should == nil
   end
 
 end end

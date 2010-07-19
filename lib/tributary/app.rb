@@ -1,7 +1,8 @@
 module Tributary class App < Sinatra::Base
 
   def self.configure *args, &block
-    set :lang, nil
+    set :lang,       nil
+    set :lang_limit, nil
     super
   end
 
