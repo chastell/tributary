@@ -2,8 +2,8 @@ module Tributary class Stream
 
   def initialize root
     @items      = Dir["#{root}/*/*.md"].map { |file| Item.new file }
-    @subsequent = Hash[recent.reverse.each_cons(2).to_a]
     @previous   = Hash[recent.each_cons(2).to_a]
+    @subsequent = Hash[recent.reverse.each_cons(2).to_a]
   end
 
   def pick_item path
