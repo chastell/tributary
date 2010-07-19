@@ -57,6 +57,12 @@ module Tributary describe Stream do
       @stream.recent.should == [@battle, @bi_en, @welcome]
     end
 
+    it 'returns properly localised Items (if available)' do
+      App.lang = 'pl'
+      Stream.new.recent.should == [@battle, @bi_pl, @welcome]
+      App.lang = nil
+    end
+
     it 'returns a limited number of newest Items' do
       @stream.recent(1).should == [@battle]
     end
