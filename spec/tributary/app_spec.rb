@@ -50,7 +50,7 @@ module Tributary describe App do
 
     get '/600'
     last_response.should be_ok
-    last_response.body.should include 'welcome to tributary'
+    last_response.body.should include 'bilinguality'
   end
 
   it 'renders the Atom feed' do

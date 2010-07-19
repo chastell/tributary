@@ -20,6 +20,13 @@
     </content>
   </entry>
   <entry>
+    <id>http://example.org/bilingual</id>
+    <link href='http://example.org/bilingual' rel='alternate' />
+    <title>bilinguality</title>
+    <updated>2010-07-15T06:00:00+02:00</updated>
+    <content type='html'>&lt;p&gt;this article is also available &lt;a href=&quot;bilingual.pl&quot;&gt;in Polish&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
     <id>http://example.org/welcome</id>
     <link href='http://example.org/welcome' rel='alternate' />
     <title>welcome to tributary</title>

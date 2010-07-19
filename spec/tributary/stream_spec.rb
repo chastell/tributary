@@ -38,7 +38,7 @@ module Tributary describe Stream do
   context '#previous' do
 
     it 'returns an Item previous to the given Item' do
-      @stream.previous(@battle).should == @welcome
+      @stream.previous(@battle).should == @bi_en
       @stream.previous(@about).should  == nil
     end
 
@@ -47,7 +47,7 @@ module Tributary describe Stream do
   context '#recent' do
 
     it 'returns published Items, newest-first' do
-      @stream.recent.should == [@battle, @welcome]
+      @stream.recent.should == [@battle, @bi_en, @welcome]
     end
 
     it 'returns a limited number of newest Items' do
@@ -59,7 +59,7 @@ module Tributary describe Stream do
   context '#subsequent' do
 
     it 'returns an Item subsequent to the given Item' do
-      @stream.subsequent(@welcome).should == @battle
+      @stream.subsequent(@welcome).should == @bi_en
       @stream.subsequent(@about).should   == nil
     end
 
