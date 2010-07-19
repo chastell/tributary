@@ -12,11 +12,7 @@ module Tributary class Stream
 
   def pick_item path
     path, lang = path.split '.'
-    if lang
-      Item.new Dir["#{App.root}/*/#{path}.#{lang}.md"].first
-    else
-      @items.find { |item| item.path == path }
-    end
+    (lang ? @all_items.select { |item| item.lang == lang } : @items).find { |item| item.path == path }
   end
 
   def previous item
