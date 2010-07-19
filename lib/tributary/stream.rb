@@ -16,7 +16,7 @@ module Tributary class Stream
   end
 
   def previous item
-    @previous[item]
+    @previous[@items.find { |i| i.path == item.path }]
   end
 
   def recent limit = @items.size
@@ -24,7 +24,7 @@ module Tributary class Stream
   end
 
   def subsequent item
-    @subsequent[item]
+    @subsequent[@items.find { |i| i.path == item.path }]
   end
 
 end end

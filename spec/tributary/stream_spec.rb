@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Tributary describe Stream do
 
   before :all do
@@ -42,6 +44,11 @@ module Tributary describe Stream do
       @stream.previous(@about).should  == nil
     end
 
+    it 'returns an Item previous to the Item with the same path (if the given Item’s lang != App.lang)' do
+      @stream.previous(@bi_en).should == @welcome
+      @stream.previous(@bi_pl).should == @welcome
+    end
+
   end
 
   context '#recent' do
@@ -61,6 +68,11 @@ module Tributary describe Stream do
     it 'returns an Item subsequent to the given Item' do
       @stream.subsequent(@welcome).should == @bi_en
       @stream.subsequent(@about).should   == nil
+    end
+
+    it 'returns an Item subsequent to the Item with the same path (if the given Item’s lang != App.lang)' do
+      @stream.subsequent(@bi_en).should == @battle
+      @stream.subsequent(@bi_pl).should == @battle
     end
 
   end
