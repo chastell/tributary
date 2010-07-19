@@ -19,6 +19,16 @@ module Tributary describe Stream do
       @stream.pick_item('bilingual.pl').should == @bi_pl
     end
 
+    it 'returns the relevant language version of an Item' do
+      App.set :lang, 'en'
+      @stream.pick_item('bilingual').should == @bi_en
+      @stream.pick_item('about').should     == @about
+      App.set :lang, 'pl'
+      @stream.pick_item('bilingual').should == @bi_pl
+      @stream.pick_item('about').should     == @about
+      App.set :lang, nil
+    end
+
   end
 
   context '#previous' do

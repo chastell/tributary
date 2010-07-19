@@ -8,7 +8,8 @@ module Tributary class Stream
 
   def pick_item path
     path, lang = path.split '.'
-    @items.find { |item| item.path == path and item.lang == lang }
+    lang = App.lang unless lang
+    @items.find { |item| item.path == path and (item.lang == lang or item.lang == nil) }
   end
 
   def previous item
