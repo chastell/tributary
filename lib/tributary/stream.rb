@@ -1,7 +1,7 @@
 module Tributary class Stream
 
-  def initialize root
-    @items      = Dir["#{root}/*/*.md"].map { |file| Item.new file }
+  def initialize
+    @items      = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }
     @previous   = Hash[recent.each_cons(2).to_a]
     @subsequent = Hash[recent.reverse.each_cons(2).to_a]
   end

@@ -7,7 +7,7 @@ module Tributary describe Stream do
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
     @welcome = Item.new 'spec/fixtures/articles/welcome.md'
-    @stream  = Stream.new 'spec/fixtures'
+    @stream  = Stream.new
   end
 
   context '#pick_item' do

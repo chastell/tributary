@@ -1,7 +1,7 @@
 module Tributary class App < Sinatra::Base
 
   before do
-    @stream = Tributary::Stream.new settings.root
+    @stream = Tributary::Stream.new
   end
 
   get '/' do
