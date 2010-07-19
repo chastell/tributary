@@ -1,5 +1,10 @@
 module Tributary class App < Sinatra::Base
 
+  def self.configure *args, &block
+    set :lang, nil
+    super
+  end
+
   before do
     @stream = Tributary::Stream.new
   end
