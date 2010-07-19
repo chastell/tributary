@@ -5,13 +5,13 @@
   </author>
   <generator uri='http://github.com/chastell/tributary'>tributary</generator>
   <id>example.org</id>
-  <link href='http://example.org:80/' rel='alternate' />
-  <link href='http://example.org:80/feed.xml' rel='self' />
+  <link href='http://example.org/' rel='alternate' />
+  <link href='http://example.org/feed.xml' rel='self' />
   <title>a tributary site</title>
   <updated>2010-07-15T12:00:00+02:00</updated>
   <entry>
     <id>example.org/600</id>
-    <link href='http://example.org:80/600' rel='alternate' />
+    <link href='http://example.org/600' rel='alternate' />
     <title>600th anniversary</title>
     <updated>2010-07-15T12:00:00+02:00</updated>
     <content type='html'>
@@ -21,7 +21,7 @@
   </entry>
   <entry>
     <id>example.org/welcome</id>
-    <link href='http://example.org:80/welcome' rel='alternate' />
+    <link href='http://example.org/welcome' rel='alternate' />
     <title>welcome to tributary</title>
     <updated>2010-07-15T00:00:00+02:00</updated>
     <content type='html'>&lt;p&gt;tributary &lt;em&gt;welcome&lt;/em&gt; article&lt;/p&gt;</content>

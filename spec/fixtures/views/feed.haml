@@ -4,14 +4,14 @@
     %name&= settings.author
   %generator{uri: 'http://github.com/chastell/tributary'} tributary
   %id= request.host
-  %link{href: "http://#{request.host_with_port}/", rel: 'alternate'}
-  %link{href: "http://#{request.host_with_port}/feed.xml", rel: 'self'}
+  %link{href: "http://#{request.host}/", rel: 'alternate'}
+  %link{href: "http://#{request.host}/feed.xml", rel: 'self'}
   %title&= settings.sitename
   %updated= @stream.recent.first.date.iso8601
   - @stream.recent(7).each do |item|
     %entry
       %id= "#{request.host}/#{item.path}"
-      %link{href: "http://#{request.host_with_port}/#{item.path}", rel: 'alternate'}
+      %link{href: "http://#{request.host}/#{item.path}", rel: 'alternate'}
       %title&= item.title
       %updated= item.date.iso8601
       %content{type: 'html'}&= item.body
