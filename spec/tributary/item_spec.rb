@@ -6,6 +6,8 @@ module Tributary describe Item do
     @about   = Item.new 'spec/fixtures/pages/about.md'
     @battle  = Item.new 'spec/fixtures/articles/600.md'
     @beep    = Item.new 'spec/fixtures/beeps/beep.md'
+    @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
+    @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
     @welcome = Item.new 'spec/fixtures/articles/welcome.md'
   end
@@ -51,6 +53,8 @@ module Tributary describe Item do
     it 'returns the given Item’s path' do
       @about.path.should  == 'about'
       @battle.path.should == '600'
+      @bi_en.path.should  == 'bilingual'
+      @bi_pl.path.should  == 'bilingual'
     end
 
   end
