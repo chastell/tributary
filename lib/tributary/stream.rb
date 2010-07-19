@@ -1,15 +1,18 @@
 module Tributary class Stream
 
   def initialize
-    @items      = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }
+    @items      = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }.select { |item| item.lang == App.lang or item.lang.nil? }
     @previous   = Hash[recent.each_cons(2).to_a]
     @subsequent = Hash[recent.reverse.each_cons(2).to_a]
   end
 
   def pick_item path
     path, lang = path.split '.'
-    lang = App.lang unless lang
-    @items.find { |item| item.path == path and (item.lang == lang or item.lang == nil) }
+    if lang
+      Item.new Dir["#{App.root}/*/#{path}.#{lang}.md"].first
+    else
+      @items.find { |item| item.path == path }
+    end
   end
 
   def previous item
