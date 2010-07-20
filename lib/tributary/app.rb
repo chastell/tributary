@@ -1,5 +1,7 @@
 module Tributary class App < Sinatra::Base
 
+  use Rack::Session::Cookie, expire_after: 60 * 60 * 24 * 365 * 7
+
   def self.configure *args, &block
     set :locale,     nil
     set :lang_limit, nil
@@ -7,8 +9,8 @@ module Tributary class App < Sinatra::Base
   end
 
   before do
-    Tributary::App.locale     = request.cookies['locale']
-    Tributary::App.lang_limit = request.cookies['lang_limit'] && request.cookies['lang_limit'].split
+    Tributary::App.locale     = session[:locale]
+    Tributary::App.lang_limit = session[:lang_limit] && session[:lang_limit].split
     @stream = Tributary::Stream.new
   end
 
@@ -18,13 +20,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/set' do
-    params.each do |key, value|
-      if value
-        response.set_cookie key, value: value, expires: Time.now + 60 * 60 * 24 * 365 * 7
-      else
-        response.delete_cookie key
-      end
-    end
+    params.each { |key, value| session[key.to_sym] = value }
     redirect request.referer
   end
 
