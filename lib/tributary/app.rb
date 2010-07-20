@@ -7,12 +7,25 @@ module Tributary class App < Sinatra::Base
   end
 
   before do
+    Tributary::App.lang       = request.cookies['lang']
+    Tributary::App.lang_limit = request.cookies['lang_limit'] && request.cookies['lang_limit'].split
     @stream = Tributary::Stream.new
   end
 
   get '/' do
     @item = OpenStruct.new view: :index
     haml @item.view
+  end
+
+  get '/set' do
+    params.each do |key, value|
+      if value
+        response.set_cookie key, value: value, expires: Time.now + 60 * 60 * 24 * 365 * 7
+      else
+        response.delete_cookie key
+      end
+    end
+    redirect request.referer
   end
 
   get '/feed.xml' do

@@ -79,4 +79,29 @@ module Tributary describe App do
     App.lang_limit.should == nil
   end
 
+  it 'sets the right App settings and redirects properly' do
+    get '/bilingual'
+    last_response.should be_ok
+    get '/set?lang=pl', {}, 'HTTP_REFERER' => '/bilingual'
+    last_response.location.should == '/bilingual'
+    follow_redirect!
+    App.lang.should == 'pl'
+    last_response.should be_ok
+    last_response.body.should include '<title>dwujęzyczność</title>'
+
+    get '/set?lang_limit=pl'
+    follow_redirect!
+    App.lang_limit.should == ['pl']
+    last_response.should be_ok
+    last_response.body.should_not include '600th anniversary'
+
+    get '/set?lang'
+    follow_redirect!
+    App.lang.should == nil
+
+    get '/set?lang_limit'
+    follow_redirect!
+    App.lang_limit.should == nil
+  end
+
 end end
