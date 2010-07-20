@@ -1,5 +1,6 @@
 require 'kramdown'
 require 'sinatra'
+require 'sinatra/r18n'
 require 'yaml'
 
 require_relative 'tributary/app'

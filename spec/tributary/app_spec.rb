@@ -102,4 +102,21 @@ module Tributary describe App do
     App.lang_limit.should == nil
   end
 
+  it 'localises the output based on locale (defaulting to English)' do
+    get '/set?locale=pl'
+    get '/bilingual'
+    last_response.should be_ok
+    last_response.body.should include 'opublikowany 15 lipca 2010'
+
+    get '/set?locale=en'
+    get '/bilingual'
+    last_response.should be_ok
+    last_response.body.should include 'published 15th of July, 2010'
+
+    get '/set?locale'
+    get '/bilingual'
+    last_response.should be_ok
+    last_response.body.should include 'published 15th of July, 2010'
+  end
+
 end end

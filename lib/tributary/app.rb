@@ -1,5 +1,7 @@
 module Tributary class App < Sinatra::Base
 
+  register Sinatra::R18n
+
   use Rack::Session::Cookie, expire_after: 60 * 60 * 24 * 365 * 7
 
   def self.configure *args, &block

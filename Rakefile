@@ -16,6 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.add_dependency 'haml'
   gem.add_dependency 'kramdown'
   gem.add_dependency 'sinatra'
+  gem.add_dependency 'sinatra-r18n'
 
   gem.add_development_dependency 'diff-lcs'
   gem.add_development_dependency 'jeweler'
