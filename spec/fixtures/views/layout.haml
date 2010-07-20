@@ -19,4 +19,28 @@
         subsequently:
         %a{href: subsequent.path}= subsequent.title
     %p
+      language:
+      - {'en' => 'English', 'pl' => 'Polish'}.each do |lang, name|
+        - if settings.lang == lang
+          = name
+        - else
+          %a{href: "/set?lang=#{lang}"}= name
+        |
+      - if settings.lang.nil?
+        default
+      - else
+        %a{href: '/set?lang'} default
+    %p
+      content:
+      - {'en' => 'English only', 'pl' => 'Polish only'}.each do |lang, name|
+        - if settings.lang_limit == [lang]
+          = name
+        - else
+          %a{href: "/set?lang_limit=#{lang}"}= name
+        |
+      - if settings.lang_limit.nil?
+        no limit
+      - else
+        %a{href: '/set?lang_limit'} no limit
+    %p
       %a{href: 'about'} designed by chastell in Mazovia
