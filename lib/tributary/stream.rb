@@ -2,7 +2,7 @@ module Tributary class Stream
 
   def initialize
     @all_items  = Dir["#{App.root}/*/*.md"].sort.map { |file| Item.new file }
-    @items      = @all_items.select { |item| item.lang == App.lang }
+    @items      = @all_items.select { |item| item.lang == App.locale }
     @items     += @all_items.select { |item| item.lang.nil? }
     @items     += @all_items
     @items.delete_if { |item| item.lang and not App.lang_limit.include? item.lang } if App.lang_limit and not App.lang_limit.empty?

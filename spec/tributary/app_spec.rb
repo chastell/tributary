@@ -74,18 +74,18 @@ module Tributary describe App do
     last_response.body.should == File.read('spec/fixtures/pages.css')
   end
 
-  it 'defaults to nil lang and lang_limit' do
-    App.lang.should       == nil
+  it 'defaults to nil locale and lang_limit' do
+    App.locale.should     == nil
     App.lang_limit.should == nil
   end
 
   it 'sets the right App settings and redirects properly' do
     get '/bilingual'
     last_response.should be_ok
-    get '/set?lang=pl', {}, 'HTTP_REFERER' => '/bilingual'
+    get '/set?locale=pl', {}, 'HTTP_REFERER' => '/bilingual'
     last_response.location.should == '/bilingual'
     follow_redirect!
-    App.lang.should == 'pl'
+    App.locale.should == 'pl'
     last_response.should be_ok
     last_response.body.should include '<title>dwujęzyczność</title>'
 
@@ -95,9 +95,9 @@ module Tributary describe App do
     last_response.should be_ok
     last_response.body.should_not include '600th anniversary'
 
-    get '/set?lang'
+    get '/set?locale'
     follow_redirect!
-    App.lang.should == nil
+    App.locale.should == nil
 
     get '/set?lang_limit'
     follow_redirect!

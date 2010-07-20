@@ -21,15 +21,15 @@
     %p
       language:
       - {'en' => 'English', 'pl' => 'Polish'}.each do |lang, name|
-        - if settings.lang == lang
+        - if settings.locale == lang
           = name
         - else
-          %a{href: "/set?lang=#{lang}"}= name
+          %a{href: "/set?locale=#{lang}"}= name
         |
-      - if settings.lang.nil?
+      - if settings.locale.nil?
         default
       - else
-        %a{href: '/set?lang'} default
+        %a{href: '/set?locale'} default
     %p
       content:
       - {'en' => 'English only', 'pl' => 'Polish only'}.each do |lang, name|

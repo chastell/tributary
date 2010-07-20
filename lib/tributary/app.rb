@@ -1,13 +1,13 @@
 module Tributary class App < Sinatra::Base
 
   def self.configure *args, &block
-    set :lang,       nil
+    set :locale,     nil
     set :lang_limit, nil
     super
   end
 
   before do
-    Tributary::App.lang       = request.cookies['lang']
+    Tributary::App.locale     = request.cookies['locale']
     Tributary::App.lang_limit = request.cookies['lang_limit'] && request.cookies['lang_limit'].split
     @stream = Tributary::Stream.new
   end

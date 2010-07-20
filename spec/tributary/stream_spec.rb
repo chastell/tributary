@@ -12,7 +12,7 @@ module Tributary describe Stream do
   end
 
   before :each do
-    App.lang       = nil
+    App.locale     = nil
     App.lang_limit = nil
     @stream = Stream.new
   end
@@ -26,18 +26,18 @@ module Tributary describe Stream do
       @stream.pick_item('bilingual.pl').should == @bi_pl
     end
 
-    it 'returns the first language version of an Item (if no Items match App.lang)' do
+    it 'returns the first language version of an Item (if no Items match App.locale)' do
       @stream.pick_item('bilingual').should == @bi_en
     end
 
     it 'returns the relevant language version of an Item' do
-      App.set :lang, 'en'
+      App.set :locale, 'en'
       Stream.new.pick_item('bilingual').should == @bi_en
       Stream.new.pick_item('about').should     == @about
-      App.set :lang, 'pl'
+      App.set :locale, 'pl'
       Stream.new.pick_item('bilingual').should == @bi_pl
       Stream.new.pick_item('about').should     == @about
-      App.set :lang, nil
+      App.set :locale, nil
     end
 
   end
@@ -49,7 +49,7 @@ module Tributary describe Stream do
       @stream.previous(@about).should  == nil
     end
 
-    it 'returns an Item previous to the Item with the same path (if the given Item’s lang != App.lang)' do
+    it 'returns an Item previous to the Item with the same path (if the given Item’s lang != App.locale)' do
       @stream.previous(@bi_en).should == @welcome
       @stream.previous(@bi_pl).should == @welcome
     end
@@ -63,7 +63,7 @@ module Tributary describe Stream do
     end
 
     it 'returns properly localised Items (if available)' do
-      App.lang = 'pl'
+      App.locale = 'pl'
       Stream.new.recent.should == [@battle, @bi_pl, @welcome]
     end
 
@@ -89,7 +89,7 @@ module Tributary describe Stream do
       @stream.subsequent(@about).should   == nil
     end
 
-    it 'returns an Item subsequent to the Item with the same path (if the given Item’s lang != App.lang)' do
+    it 'returns an Item subsequent to the Item with the same path (if the given Item’s lang != App.locale)' do
       @stream.subsequent(@bi_en).should == @battle
       @stream.subsequent(@bi_pl).should == @battle
     end
