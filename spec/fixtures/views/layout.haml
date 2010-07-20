@@ -12,35 +12,35 @@
     = yield
     - if previous = @stream.previous(@item)
       %p
-        previously:
+        #{t.previously}:
         %a{href: previous.path}= previous.title
     - if subsequent = @stream.subsequent(@item)
       %p
-        subsequently:
+        #{t.subsequently}:
         %a{href: subsequent.path}= subsequent.title
     %p
-      language:
-      - {'en' => 'English', 'pl' => 'Polish'}.each do |lang, name|
+      #{t.language}:
+      - {'en' => t.english, 'pl' => t.polish}.each do |lang, name|
         - if settings.locale == lang
           = name
         - else
           %a{href: "/set?locale=#{lang}"}= name
         |
       - if settings.locale.nil?
-        default
+        = t.default
       - else
-        %a{href: '/set?locale'} default
+        %a{href: '/set?locale'}= t.default
     %p
-      content:
-      - {'en' => 'English only', 'pl' => 'Polish only'}.each do |lang, name|
+      #{t.content}:
+      - {'en' => t.english_only, 'pl' => t.polish_only}.each do |lang, name|
         - if settings.lang_limit == [lang]
           = name
         - else
           %a{href: "/set?lang_limit=#{lang}"}= name
         |
       - if settings.lang_limit.nil?
-        no limit
+        = t.no_limit
       - else
-        %a{href: '/set?lang_limit'} no limit
+        %a{href: '/set?lang_limit'}= t.no_limit
     %p
       %a{href: 'about'} designed by chastell in Mazovia
