@@ -80,8 +80,6 @@ module Tributary describe App do
   end
 
   it 'sets the right App settings and redirects properly' do
-    get '/bilingual'
-    last_response.should be_ok
     get '/set?locale=pl', {}, 'HTTP_REFERER' => '/bilingual'
     last_response.location.should == '/bilingual'
     follow_redirect!
