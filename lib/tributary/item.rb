@@ -39,7 +39,7 @@ module Tributary class Item < OpenStruct
   end
 
   def title
-    @table[:title] or @body.split.first + '…'
+    @table[:title] or @body.scan(/\p{L}+/).first + '…'
   end
 
   def view

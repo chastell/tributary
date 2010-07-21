@@ -5,7 +5,6 @@ module Tributary describe Item do
   before :all do
     @about   = Item.new 'spec/fixtures/pages/about.md'
     @battle  = Item.new 'spec/fixtures/articles/600.en.md'
-    @beep    = Item.new 'spec/fixtures/beeps/beep.md'
     @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
@@ -88,7 +87,9 @@ module Tributary describe Item do
     end
 
     it 'returns elided body if the YAML-specified title is missing' do
-      @beep.title.should == 'beep…'
+      Item.new('spec/fixtures/beeps/beep.md').title.should  == 'beep…'
+      Item.new('spec/fixtures/beeps/link.md').title.should  == 'Qué…'
+      Item.new('spec/fixtures/beeps/quote.md').title.should == 'An…'
     end
 
   end
