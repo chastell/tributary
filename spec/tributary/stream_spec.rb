@@ -117,4 +117,12 @@ module Tributary describe Stream do
 
   end
 
+  context '#views' do
+
+    it 'returns an Array of views used by the Items' do
+      @stream.views.should == [:articles, :beeps, :pages]
+    end
+
+  end
+
 end end
