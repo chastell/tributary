@@ -7,7 +7,7 @@ module Tributary describe Stream do
     @battle  = Item.new 'spec/fixtures/articles/600.md'
     @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
-    @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
+    @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.en.md'
     @welcome = Item.new 'spec/fixtures/articles/welcome.md'
   end
 
