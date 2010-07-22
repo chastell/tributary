@@ -10,15 +10,15 @@ module Tributary class Stream
   end
 
   def previous item, filter = {}
-    recent(nil, filter)[recent(nil, filter).index { |i| i.path == item.path } + 1] rescue nil
+    published(filter)[published(filter).index { |i| i.path == item.path } + 1] rescue nil
   end
 
   def recent limit = nil, filter = {}
-    items_ltd({published?: true}.merge filter).take limit || @items.size
+    published(filter).take limit || @items.size
   end
 
   def subsequent item, filter = {}
-    recent(nil, filter).reverse[recent(nil, filter).reverse.index { |i| i.path == item.path } + 1] rescue nil
+    published(filter).reverse[published(filter).reverse.index { |i| i.path == item.path } + 1] rescue nil
   end
 
   private
@@ -30,6 +30,10 @@ module Tributary class Stream
       items_ltd = items_ltd.select { |item| item.send(method) == value }
     end
     items_ltd.select { |item| item == items_ltd.find { |i| i.path == item.path } }
+  end
+
+  def published filter = {}
+    items_ltd({published?: true}.merge filter)
   end
 
 end end
