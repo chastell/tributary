@@ -3,12 +3,34 @@
 module Tributary describe Item do
 
   before :all do
-    @about   = Item.new 'spec/fixtures/pages/about.md'
-    @battle  = Item.new 'spec/fixtures/articles/600.md'
-    @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
-    @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
-    @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
-    @welcome = Item.new 'spec/fixtures/articles/welcome.md'
+    @about     = Item.new 'spec/fixtures/pages/about.md'
+    @battle    = Item.new 'spec/fixtures/articles/600.md'
+    @battle_en = Item.new 'spec/fixtures/articles/600.en.md'
+    @beep      = Item.new 'spec/fixtures/beeps/beep.md'
+    @bi_en     = Item.new 'spec/fixtures/articles/bilingual.en.md'
+    @bi_pl     = Item.new 'spec/fixtures/articles/bilingual.pl.md'
+    @unix      = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
+    @welcome   = Item.new 'spec/fixtures/articles/welcome.md'
+  end
+
+  context '#<=>' do
+
+    it 'sorts Items by date, date-less last' do
+      [@bi_en, @beep, @welcome, @about, @battle].sort.should == [@battle, @bi_en, @welcome, @about, @beep]
+    end
+
+    it 'sorts same-path Items by lang, based on App.locale' do
+      App.locale = 'pl'
+      [@bi_en, @bi_pl].sort.should      == [@bi_pl, @bi_en]
+      [@battle_en, @battle].sort.should == [@battle, @battle_en]
+      App.locale = 'en'
+      [@bi_pl, @bi_en].sort.should      == [@bi_en, @bi_pl]
+      [@battle, @battle_en].sort.should == [@battle_en, @battle]
+      App.locale = nil
+      [@bi_pl, @bi_en].sort.should      == [@bi_en, @bi_pl]
+      [@battle_en, @battle].sort.should == [@battle, @battle_en]
+    end
+
   end
 
   context '#body' do

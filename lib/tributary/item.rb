@@ -8,6 +8,23 @@ module Tributary class Item < OpenStruct
     super YAML.load yaml
   end
 
+  def <=> other
+    case
+    when other.date && date then other.date <=> date
+    when date               then -1
+    when other.date         then 1
+    else                         0
+    end.nonzero? or
+    (path <=> other.path).nonzero? or
+    case
+    when lang       == App.locale then -1
+    when other.lang == App.locale then 1
+    when lang.nil?                then -1
+    when other.lang.nil?          then 1
+    else                               lang <=> other.lang
+    end
+  end
+
   def body
     Kramdown::Document.new(@body).to_html
   end
