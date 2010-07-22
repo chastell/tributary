@@ -1,12 +1,12 @@
 module Tributary class Stream
 
   def initialize
-    @items = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }.sort
+    @items = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }
   end
 
   def pick_item path
     path, lang = path.split '.'
-    (lang ? @items.select { |item| item.lang == lang } : @items).find { |item| item.path == path }
+    (lang ? @items.select { |item| item.lang == lang } : @items).sort.find { |item| item.path == path }
   end
 
   def previous item
@@ -24,7 +24,7 @@ module Tributary class Stream
   private
 
   def items_ltd filter = {}
-    items_ltd = @items.dup
+    items_ltd = @items.sort
     items_ltd.delete_if { |item| item.lang and not App.lang_limit.include? item.lang } if App.lang_limit and not App.lang_limit.empty?
     filter.each do |method, value|
       items_ltd = items_ltd.select { |item| item.send(method) == value }

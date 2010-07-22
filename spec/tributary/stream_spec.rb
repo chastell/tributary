@@ -37,11 +37,11 @@ module Tributary describe Stream do
 
     it 'returns the relevant language version of an Item' do
       App.set :locale, 'en'
-      Stream.new.pick_item('bilingual').should == @bi_en
-      Stream.new.pick_item('about').should     == @about
+      @stream.pick_item('bilingual').should == @bi_en
+      @stream.pick_item('about').should     == @about
       App.set :locale, 'pl'
-      Stream.new.pick_item('bilingual').should == @bi_pl
-      Stream.new.pick_item('about').should     == @about
+      @stream.pick_item('bilingual').should == @bi_pl
+      @stream.pick_item('about').should     == @about
       App.set :locale, nil
     end
 
@@ -70,16 +70,16 @@ module Tributary describe Stream do
 
     it 'returns properly localised Items (if available)' do
       App.locale = 'pl'
-      Stream.new.recent.should == [@battle, @bi_pl, @welcome]
+      @stream.recent.should == [@battle, @bi_pl, @welcome]
     end
 
     it 'returns lang_limited Items (if requested)' do
       App.lang_limit = ['en']
-      Stream.new.recent.should == [@battle, @bi_en, @welcome]
+      @stream.recent.should == [@battle, @bi_en, @welcome]
       App.lang_limit = ['pl']
-      Stream.new.recent.should == [@battle, @bi_pl, @welcome]
+      @stream.recent.should == [@battle, @bi_pl, @welcome]
       App.lang_limit = []
-      Stream.new.recent.should == [@battle, @bi_en, @welcome]
+      @stream.recent.should == [@battle, @bi_en, @welcome]
     end
 
     it 'returns a limited number of newest Items' do
