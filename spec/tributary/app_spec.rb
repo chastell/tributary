@@ -67,6 +67,18 @@ module Tributary describe App do
     last_response.body.should == File.read('spec/fixtures/index.xml')
   end
 
+  it 'renders per-locale Atom feeds' do
+    get '/index.en.xml'
+    last_response.should be_ok
+    last_response.headers['Content-Type'].should == 'application/atom+xml'
+    last_response.body.should == File.read('spec/fixtures/index.en.xml')
+
+    get '/index.pl.xml'
+    last_response.should be_ok
+    last_response.headers['Content-Type'].should == 'application/atom+xml'
+    last_response.body.should == File.read('spec/fixtures/index.pl.xml')
+  end
+
   it 'renders the CSS stylesheet' do
     get '/layout.css'
     last_response.should be_ok
