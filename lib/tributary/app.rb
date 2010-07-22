@@ -37,7 +37,11 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/:path' do |path|
-    @item = @stream.pick_item path
+    if @stream.views.include? path.to_sym
+      @item = OpenStruct.new view: "#{path}.index".to_sym
+    else
+      @item = @stream.pick_item path
+    end
     haml @item.view
   end
 

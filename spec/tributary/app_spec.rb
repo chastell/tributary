@@ -31,6 +31,13 @@ module Tributary describe App do
     last_response.body.should include 'tributary <em>welcome</em> article'
   end
 
+  it 'renders the given view’s index' do
+    get '/articles'
+    last_response.should be_ok
+    last_response.body.should     include 'welcome to tributary'
+    last_response.body.should_not include 'a…'
+  end
+
   it 'sets /’s view to :index' do
     get '/'
     last_response.should be_ok
