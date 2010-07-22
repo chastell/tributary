@@ -3,6 +3,7 @@
 module Tributary describe Item do
 
   before :all do
+    App.configure {}
     @about     = Item.new 'spec/fixtures/pages/about.md'
     @battle    = Item.new 'spec/fixtures/articles/600.md'
     @battle_en = Item.new 'spec/fixtures/articles/600.en.md'

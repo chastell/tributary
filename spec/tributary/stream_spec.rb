@@ -3,6 +3,9 @@
 module Tributary describe Stream do
 
   before :all do
+    App.configure do |config|
+      config.set :root, 'spec/fixtures'
+    end
     @about   = Item.new 'spec/fixtures/pages/about.md'
     @battle  = Item.new 'spec/fixtures/articles/600.md'
     @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
