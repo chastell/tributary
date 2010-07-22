@@ -7,6 +7,7 @@ module Tributary describe Stream do
     @battle  = Item.new 'spec/fixtures/articles/600.md'
     @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
+    @dated   = Item.new 'spec/fixtures/beeps/dated.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.en.md'
     @welcome = Item.new 'spec/fixtures/articles/welcome.md'
   end
@@ -56,8 +57,8 @@ module Tributary describe Stream do
     end
 
     it 'returns an Item previous to the Item with the same path (if the given Item’s lang != App.locale)' do
-      @stream.previous(@bi_en).should == @welcome
-      @stream.previous(@bi_pl).should == @welcome
+      @stream.previous(@bi_en).should == @dated
+      @stream.previous(@bi_pl).should == @dated
     end
 
   end
@@ -65,21 +66,21 @@ module Tributary describe Stream do
   context '#recent' do
 
     it 'returns published Items, newest-first' do
-      @stream.recent.should == [@battle, @bi_en, @welcome]
+      @stream.recent.should == [@battle, @bi_en, @dated, @welcome]
     end
 
     it 'returns properly localised Items (if available)' do
       App.locale = 'pl'
-      @stream.recent.should == [@battle, @bi_pl, @welcome]
+      @stream.recent.should == [@battle, @bi_pl, @dated, @welcome]
     end
 
     it 'returns lang_limited Items (if requested)' do
       App.lang_limit = ['en']
-      @stream.recent.should == [@battle, @bi_en, @welcome]
+      @stream.recent.should == [@battle, @bi_en, @dated, @welcome]
       App.lang_limit = ['pl']
-      @stream.recent.should == [@battle, @bi_pl, @welcome]
+      @stream.recent.should == [@battle, @bi_pl, @dated, @welcome]
       App.lang_limit = []
-      @stream.recent.should == [@battle, @bi_en, @welcome]
+      @stream.recent.should == [@battle, @bi_en, @dated, @welcome]
     end
 
     it 'returns a limited number of newest Items' do
@@ -91,7 +92,7 @@ module Tributary describe Stream do
   context '#subsequent' do
 
     it 'returns an Item subsequent to the given Item' do
-      @stream.subsequent(@welcome).should == @bi_en
+      @stream.subsequent(@welcome).should == @dated
       @stream.subsequent(@battle).should  == nil
       @stream.subsequent(@about).should   == nil
     end
