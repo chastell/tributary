@@ -26,9 +26,9 @@ module Tributary class App < Sinatra::Base
     redirect request.referer
   end
 
-  get '/feed.xml' do
+  get '/:feed.xml' do |feed|
     content_type 'application/atom+xml'
-    haml :feed, layout: false
+    haml "#{feed}.xml".to_sym, layout: false
   end
 
   get '/:style.css' do |style|

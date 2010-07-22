@@ -61,10 +61,10 @@ module Tributary describe App do
   end
 
   it 'renders the Atom feed' do
-    get '/feed.xml'
+    get '/index.xml'
     last_response.should be_ok
     last_response.headers['Content-Type'].should == 'application/atom+xml'
-    last_response.body.should == File.read('spec/fixtures/feed.xml')
+    last_response.body.should == File.read('spec/fixtures/index.xml')
   end
 
   it 'renders the CSS stylesheet' do
