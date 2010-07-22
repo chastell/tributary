@@ -12,7 +12,7 @@
   <entry>
     <id>http://example.org/600</id>
     <link href='http://example.org/600' rel='alternate' />
-    <title>600th anniversary</title>
+    <title>600th anniversary (intl.)</title>
     <updated>2010-07-15T12:00:00+02:00</updated>
     <content type='html'>
       &lt;p&gt;600 years ago &lt;a href=&quot;http://en.wikipedia.org/wiki/Battle_of_Grunwald&quot;&gt;something supposedly important&lt;/a&gt;

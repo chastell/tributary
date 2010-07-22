@@ -91,7 +91,7 @@ module Tributary describe App do
     follow_redirect!
     App.lang_limit.should == ['pl']
     last_response.should be_ok
-    last_response.body.should_not include '600th anniversary'
+    last_response.body.should_not include '600th anniversary (English)'
 
     get '/set?locale'
     follow_redirect!

@@ -4,7 +4,7 @@ module Tributary describe Stream do
 
   before :all do
     @about   = Item.new 'spec/fixtures/pages/about.md'
-    @battle  = Item.new 'spec/fixtures/articles/600.en.md'
+    @battle  = Item.new 'spec/fixtures/articles/600.md'
     @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
     @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.md'
@@ -71,7 +71,7 @@ module Tributary describe Stream do
       App.lang_limit = ['en']
       Stream.new.recent.should == [@battle, @bi_en, @welcome]
       App.lang_limit = ['pl']
-      Stream.new.recent.should == [@bi_pl, @welcome]
+      Stream.new.recent.should == [@battle, @bi_pl, @welcome]
       App.lang_limit = []
       Stream.new.recent.should == [@battle, @bi_en, @welcome]
     end
