@@ -87,6 +87,11 @@ module Tributary describe Stream do
       @stream.recent(1).should == [@battle]
     end
 
+    it 'returns a list of Items with a given view' do
+      @stream.recent(nil, view: :articles).should == [@battle, @bi_en, @welcome]
+      @stream.recent(2, view: :articles).should   == [@battle, @bi_en]
+    end
+
   end
 
   context '#subsequent' do

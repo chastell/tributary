@@ -13,8 +13,8 @@ module Tributary class Stream
     recent[recent.index { |i| i.path == item.path } + 1] rescue nil
   end
 
-  def recent limit = @items.size
-    items_ltd(published?: true).take limit
+  def recent limit = nil, filter = {}
+    items_ltd({published?: true}.merge filter).take limit || @items.size
   end
 
   def subsequent item
