@@ -1,12 +1,10 @@
 module Tributary class Stream
 
   def initialize
-    @all_items  = Dir["#{App.root}/*/*.md"].sort.map { |file| Item.new file }
-    @items      = @all_items.select { |item| item.lang == App.locale }
-    @items     += @all_items.select { |item| item.lang.nil? }
-    @items     += @all_items
+    @all_items  = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }.sort
+    @items      = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }.sort
     @items.delete_if { |item| item.lang and not App.lang_limit.include? item.lang } if App.lang_limit and not App.lang_limit.empty?
-    @items      = @items.uniq.select { |item| item == @items.find { |i| i.path == item.path } }
+    @items      = @items.select { |item| item == @items.find { |i| i.path == item.path } }
     @previous   = Hash[recent.each_cons(2).to_a]
     @subsequent = Hash[recent.reverse.each_cons(2).to_a]
   end
@@ -21,7 +19,7 @@ module Tributary class Stream
   end
 
   def recent limit = @items.size
-    @items.select(&:published?).sort_by(&:date).reverse.take limit
+    @items.select(&:published?).take limit
   end
 
   def subsequent item
