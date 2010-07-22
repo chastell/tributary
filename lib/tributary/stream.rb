@@ -14,7 +14,7 @@ module Tributary class Stream
   end
 
   def recent limit = @items.size
-    items_ltd.select(&:published?).take limit
+    items_ltd(published?: true).take limit
   end
 
   def subsequent item
@@ -23,9 +23,12 @@ module Tributary class Stream
 
   private
 
-  def items_ltd
+  def items_ltd filter = {}
     items_ltd = @items.dup
     items_ltd.delete_if { |item| item.lang and not App.lang_limit.include? item.lang } if App.lang_limit and not App.lang_limit.empty?
+    filter.each do |method, value|
+      items_ltd = items_ltd.select { |item| item.send(method) == value }
+    end
     items_ltd.select { |item| item == items_ltd.find { |i| i.path == item.path } }
   end
 
