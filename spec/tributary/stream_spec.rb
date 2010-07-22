@@ -30,6 +30,11 @@ module Tributary describe Stream do
       @stream.pick_item('bilingual').should == @bi_en
     end
 
+    it 'returns an Item even if it’s outside of current App.lang_limit' do
+      App.lang_limit = ['pl']
+      @stream.pick_item('unix-millennium-bug').should == @unix
+    end
+
     it 'returns the relevant language version of an Item' do
       App.set :locale, 'en'
       Stream.new.pick_item('bilingual').should == @bi_en
