@@ -4,14 +4,14 @@ module Tributary describe Item do
 
   before :all do
     App.configure {}
-    @about     = Item.new 'spec/fixtures/pages/about.md'
-    @battle    = Item.new 'spec/fixtures/articles/600.md'
-    @battle_en = Item.new 'spec/fixtures/articles/600.en.md'
-    @beep      = Item.new 'spec/fixtures/beeps/beep.md'
-    @bi_en     = Item.new 'spec/fixtures/articles/bilingual.en.md'
-    @bi_pl     = Item.new 'spec/fixtures/articles/bilingual.pl.md'
-    @unix      = Item.new 'spec/fixtures/articles/unix-millennium-bug.en.md'
-    @welcome   = Item.new 'spec/fixtures/articles/welcome.md'
+    @about     = Item.new 'spec/site/pages/about.md'
+    @battle    = Item.new 'spec/site/articles/600.md'
+    @battle_en = Item.new 'spec/site/articles/600.en.md'
+    @beep      = Item.new 'spec/site/beeps/beep.md'
+    @bi_en     = Item.new 'spec/site/articles/bilingual.en.md'
+    @bi_pl     = Item.new 'spec/site/articles/bilingual.pl.md'
+    @unix      = Item.new 'spec/site/articles/unix-millennium-bug.en.md'
+    @welcome   = Item.new 'spec/site/articles/welcome.md'
   end
 
   context '#<=>' do
@@ -57,7 +57,7 @@ module Tributary describe Item do
   context '#eql?' do
 
     it 'returns predicate for sane use of Items as Hash keys' do
-      @about.should be_eql Item.new('spec/fixtures/pages/about.md')
+      @about.should be_eql Item.new('spec/site/pages/about.md')
     end
 
   end
@@ -65,7 +65,7 @@ module Tributary describe Item do
   context '#hash' do
 
     it 'returns static value for sane use of Items as Hash keys' do
-      @about.hash.should == Item.new('spec/fixtures/pages/about.md').hash
+      @about.hash.should == Item.new('spec/site/pages/about.md').hash
     end
 
   end
@@ -110,9 +110,9 @@ module Tributary describe Item do
     end
 
     it 'returns elided body if the YAML-specified title is missing' do
-      Item.new('spec/fixtures/beeps/beep.md').title.should  == 'beep…'
-      Item.new('spec/fixtures/beeps/link.md').title.should  == 'Qué…'
-      Item.new('spec/fixtures/beeps/quote.md').title.should == 'An…'
+      Item.new('spec/site/beeps/beep.md').title.should  == 'beep…'
+      Item.new('spec/site/beeps/link.md').title.should  == 'Qué…'
+      Item.new('spec/site/beeps/quote.md').title.should == 'An…'
     end
 
   end

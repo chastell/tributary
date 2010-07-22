@@ -4,15 +4,15 @@ module Tributary describe Stream do
 
   before :all do
     App.configure do |config|
-      config.set :root, 'spec/fixtures'
+      config.set :root, 'spec/site'
     end
-    @about   = Item.new 'spec/fixtures/pages/about.md'
-    @battle  = Item.new 'spec/fixtures/articles/600.md'
-    @bi_en   = Item.new 'spec/fixtures/articles/bilingual.en.md'
-    @bi_pl   = Item.new 'spec/fixtures/articles/bilingual.pl.md'
-    @dated   = Item.new 'spec/fixtures/beeps/dated.md'
-    @unix    = Item.new 'spec/fixtures/articles/unix-millennium-bug.en.md'
-    @welcome = Item.new 'spec/fixtures/articles/welcome.md'
+    @about   = Item.new 'spec/site/pages/about.md'
+    @battle  = Item.new 'spec/site/articles/600.md'
+    @bi_en   = Item.new 'spec/site/articles/bilingual.en.md'
+    @bi_pl   = Item.new 'spec/site/articles/bilingual.pl.md'
+    @dated   = Item.new 'spec/site/beeps/dated.md'
+    @unix    = Item.new 'spec/site/articles/unix-millennium-bug.en.md'
+    @welcome = Item.new 'spec/site/articles/welcome.md'
   end
 
   before :each do
