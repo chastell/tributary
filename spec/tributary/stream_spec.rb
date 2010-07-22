@@ -61,6 +61,10 @@ module Tributary describe Stream do
       @stream.previous(@bi_pl).should == @dated
     end
 
+    it 'returns an Item previous to the given Item with the given view' do
+      @stream.previous(@bi_en, view: :articles).should == @welcome
+    end
+
   end
 
   context '#recent' do
@@ -105,6 +109,10 @@ module Tributary describe Stream do
     it 'returns an Item subsequent to the Item with the same path (if the given Item’s lang != App.locale)' do
       @stream.subsequent(@bi_en).should == @battle
       @stream.subsequent(@bi_pl).should == @battle
+    end
+
+    it 'returns an Item subsequent to the given Item with the given view' do
+      @stream.subsequent(@bi_en, view: :articles).should == @battle
     end
 
   end

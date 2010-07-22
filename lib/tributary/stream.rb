@@ -9,16 +9,16 @@ module Tributary class Stream
     (lang ? @items.select { |item| item.lang == lang } : @items).sort.find { |item| item.path == path }
   end
 
-  def previous item
-    recent[recent.index { |i| i.path == item.path } + 1] rescue nil
+  def previous item, filter = {}
+    recent(nil, filter)[recent(nil, filter).index { |i| i.path == item.path } + 1] rescue nil
   end
 
   def recent limit = nil, filter = {}
     items_ltd({published?: true}.merge filter).take limit || @items.size
   end
 
-  def subsequent item
-    recent.reverse[recent.reverse.index { |i| i.path == item.path } + 1] rescue nil
+  def subsequent item, filter = {}
+    recent(nil, filter).reverse[recent(nil, filter).reverse.index { |i| i.path == item.path } + 1] rescue nil
   end
 
   private
