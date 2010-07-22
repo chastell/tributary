@@ -45,8 +45,9 @@ module Tributary describe Stream do
   context '#previous' do
 
     it 'returns an Item previous to the given Item' do
-      @stream.previous(@battle).should == @bi_en
-      @stream.previous(@about).should  == nil
+      @stream.previous(@battle).should  == @bi_en
+      @stream.previous(@welcome).should == nil
+      @stream.previous(@about).should   == nil
     end
 
     it 'returns an Item previous to the Item with the same path (if the given Item’s lang != App.locale)' do
@@ -86,6 +87,7 @@ module Tributary describe Stream do
 
     it 'returns an Item subsequent to the given Item' do
       @stream.subsequent(@welcome).should == @bi_en
+      @stream.subsequent(@battle).should  == nil
       @stream.subsequent(@about).should   == nil
     end
 

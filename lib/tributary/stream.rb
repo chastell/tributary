@@ -1,9 +1,7 @@
 module Tributary class Stream
 
   def initialize
-    @items      = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }.sort
-    @previous   = Hash[recent.each_cons(2).to_a]
-    @subsequent = Hash[recent.reverse.each_cons(2).to_a]
+    @items = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }.sort
   end
 
   def pick_item path
@@ -12,7 +10,7 @@ module Tributary class Stream
   end
 
   def previous item
-    @previous[items_ltd.find { |i| i.path == item.path }]
+    recent[recent.index { |i| i.path == item.path } + 1] rescue nil
   end
 
   def recent limit = @items.size
@@ -20,7 +18,7 @@ module Tributary class Stream
   end
 
   def subsequent item
-    @subsequent[items_ltd.find { |i| i.path == item.path }]
+    recent.reverse[recent.reverse.index { |i| i.path == item.path } + 1] rescue nil
   end
 
   private
