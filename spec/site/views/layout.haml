@@ -7,7 +7,7 @@
     %link{href: 'layout.css', rel: 'stylesheet'}
     %link{href: "#{@item.view}.css", rel: 'stylesheet'}
     %meta{charset: 'UTF-8'}
-    %title= @item.title or settings.sitename
+    %title= @item.title or settings.sitename + "#{": #{@item.path}" if @item.path}"
   %body
     %p
       %a{href: '/'}= settings.sitename
