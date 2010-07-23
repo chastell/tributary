@@ -8,7 +8,7 @@
   %link{href: "http://#{request.host}/index.xml", rel: 'self'}
   %title&= settings.sitename
   %updated= @stream.recent.first.date.iso8601
-  - @stream.recent(3).each do |item|
+  - @stream.recent(5).each do |item|
     %entry
       %id= "http://#{request.host}/#{item.path}"
       %link{href: "http://#{request.host}/#{item.path}", rel: 'alternate'}

@@ -11,6 +11,8 @@ module Tributary describe Stream do
     @bi_en   = Item.new 'spec/site/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/site/articles/bilingual.pl.md'
     @dated   = Item.new 'spec/site/beeps/dated.md'
+    @english = Item.new 'spec/site/beeps/english.en.md'
+    @polish  = Item.new 'spec/site/beeps/polish.pl.md'
     @unix    = Item.new 'spec/site/articles/unix-millennium-bug.en.md'
     @welcome = Item.new 'spec/site/articles/welcome.md'
   end
@@ -81,25 +83,25 @@ module Tributary describe Stream do
   context '#recent' do
 
     it 'returns published Items, newest-first' do
-      @stream.recent.should == [@battle, @bi_en, @dated, @welcome]
+      @stream.recent.should == [@polish, @english, @battle, @bi_en, @dated, @welcome]
     end
 
     it 'returns properly localised Items (if available)' do
       App.locale = 'pl'
-      @stream.recent.should == [@battle, @bi_pl, @dated, @welcome]
+      @stream.recent.should == [@polish, @english, @battle, @bi_pl, @dated, @welcome]
     end
 
     it 'returns lang_limited Items (if requested)' do
       App.lang_limit = ['en']
-      @stream.recent.should == [@battle, @bi_en, @dated, @welcome]
+      @stream.recent.should == [@english, @battle, @bi_en, @dated, @welcome]
       App.lang_limit = ['pl']
-      @stream.recent.should == [@battle, @bi_pl, @dated, @welcome]
+      @stream.recent.should == [@polish, @battle, @bi_pl, @dated, @welcome]
       App.lang_limit = []
-      @stream.recent.should == [@battle, @bi_en, @dated, @welcome]
+      @stream.recent.should == [@polish, @english, @battle, @bi_en, @dated, @welcome]
     end
 
     it 'returns a limited number of newest Items' do
-      @stream.recent(1).should == [@battle]
+      @stream.recent(1).should == [@polish]
     end
 
     it 'returns a list of Items with a given view' do
@@ -113,7 +115,7 @@ module Tributary describe Stream do
 
     it 'returns an Item subsequent to the given Item' do
       @stream.subsequent(@welcome).should == @dated
-      @stream.subsequent(@battle).should  == nil
+      @stream.subsequent(@polish).should  == nil
       @stream.subsequent(@about).should   == nil
     end
 
