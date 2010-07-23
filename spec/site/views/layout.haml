@@ -1,9 +1,11 @@
 !!! 5
 %html{lang: 'en'}
   %head
-    %link{href: 'index.xml',    rel: 'alternate', title: 'no language preference', type: 'application/atom+xml'}
-    %link{href: 'index.en.xml', rel: 'alternate', title: 'English preference',     type: 'application/atom+xml'}
-    %link{href: 'index.pl.xml', rel: 'alternate', title: 'Polish preference',      type: 'application/atom+xml'}
+    %link{href: 'index.xml',       rel: 'alternate', title: 'no language preference', type: 'application/atom+xml'}
+    %link{href: 'index.en.xml',    rel: 'alternate', title: 'English preference',     type: 'application/atom+xml'}
+    %link{href: 'index.pl.xml',    rel: 'alternate', title: 'Polish preference',      type: 'application/atom+xml'}
+    %link{href: 'index.en.en.xml', rel: 'alternate', title: 'English-only content',   type: 'application/atom+xml'}
+    %link{href: 'index.pl.pl.xml', rel: 'alternate', title: 'Polish-only content',    type: 'application/atom+xml'}
     %link{href: 'layout.css', rel: 'stylesheet'}
     %link{href: "#{@item.view}.css", rel: 'stylesheet'}
     %meta{charset: 'UTF-8'}

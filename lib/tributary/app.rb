@@ -28,7 +28,8 @@ module Tributary class App < Sinatra::Base
 
   get '/:feed.xml' do |feed|
     content_type 'application/atom+xml'
-    feed, App.locale = feed.split '.'
+    feed, App.locale, lang_limit = feed.split '.'
+    App.lang_limit = lang_limit.split if lang_limit
     haml "#{feed}.xml".to_sym, layout: false
   end
 
