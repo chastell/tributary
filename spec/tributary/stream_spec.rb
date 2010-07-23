@@ -21,6 +21,14 @@ module Tributary describe Stream do
     @stream = Stream.new
   end
 
+  context '#langs' do
+
+    it 'returns an Array of langs used in the Items' do
+      @stream.langs.should == ['en', 'pl']
+    end
+
+  end
+
   context '#pick_item' do
 
     it 'returns the relevant Item based on the provided path' do

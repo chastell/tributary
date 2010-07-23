@@ -4,6 +4,10 @@ module Tributary class Stream
     @items = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }
   end
 
+  def langs
+    @items.map(&:lang).uniq.compact.sort
+  end
+
   def pick_item path
     path, lang = path.split '.'
     (lang ? @items.select { |item| item.lang == lang } : @items).sort.find { |item| item.path == path }
