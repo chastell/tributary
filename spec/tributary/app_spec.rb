@@ -161,4 +161,26 @@ module Tributary describe App do
     last_response.body.should include 'published 15th of July, 2010'
   end
 
+  it 'sets the right value for the <html> element’s lang attribute' do
+    get '/set?locale=en'
+    get '/'
+    last_response.should be_ok
+    last_response.body.should include "<html lang='en'>"
+
+    get '/set?locale=pl'
+    get '/'
+    last_response.should be_ok
+    last_response.body.should include "<html lang='pl'>"
+
+    get '/set?locale'
+    get '/'
+    last_response.should be_ok
+    last_response.body.should include "<html lang='en'>"
+
+    get '/set?locale=en'
+    get '/bilingual.pl'
+    last_response.should be_ok
+    last_response.body.should include "<html lang='pl'>"
+  end
+
 end end
