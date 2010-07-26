@@ -117,11 +117,11 @@ module Tributary describe Item do
 
   end
 
-  context '#view' do
+  context '#type' do
 
-    it 'returns the given Item’s view' do
-      @about.view.should   == :pages
-      @welcome.view.should == :articles
+    it 'returns the given Item’s type' do
+      @about.type.should   == :pages
+      @welcome.type.should == :articles
     end
 
   end

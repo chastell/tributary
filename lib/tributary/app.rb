@@ -17,8 +17,8 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/' do
-    @item = OpenStruct.new view: :index
-    haml @item.view
+    @item = OpenStruct.new type: :index
+    haml @item.type
   end
 
   get '/set' do
@@ -39,12 +39,12 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/:path' do |path|
-    if @stream.views.include? path.to_sym
-      @item = OpenStruct.new path: path, view: "#{path}.index".to_sym
+    if @stream.types.include? path.to_sym
+      @item = OpenStruct.new path: path, type: "#{path}.index".to_sym
     else
       @item = @stream.pick_item path
     end
-    haml @item.view
+    haml @item.type
   end
 
 end end

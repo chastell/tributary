@@ -74,8 +74,8 @@ module Tributary describe Stream do
       @stream.previous(@bi_pl).should == @dated
     end
 
-    it 'returns an Item previous to the given Item with the given view' do
-      @stream.previous(@bi_en, view: :articles).should == @welcome
+    it 'returns an Item previous to the given Item with the given type' do
+      @stream.previous(@bi_en, type: :articles).should == @welcome
     end
 
   end
@@ -104,9 +104,9 @@ module Tributary describe Stream do
       @stream.recent(1).should == [@polish]
     end
 
-    it 'returns a list of Items with a given view' do
-      @stream.recent(nil, view: :articles).should == [@battle, @bi_en, @welcome]
-      @stream.recent(2, view: :articles).should   == [@battle, @bi_en]
+    it 'returns a list of Items with a given type' do
+      @stream.recent(nil, type: :articles).should == [@battle, @bi_en, @welcome]
+      @stream.recent(2, type: :articles).should   == [@battle, @bi_en]
     end
 
   end
@@ -124,16 +124,16 @@ module Tributary describe Stream do
       @stream.subsequent(@bi_pl).should == @battle
     end
 
-    it 'returns an Item subsequent to the given Item with the given view' do
-      @stream.subsequent(@bi_en, view: :articles).should == @battle
+    it 'returns an Item subsequent to the given Item with the given type' do
+      @stream.subsequent(@bi_en, type: :articles).should == @battle
     end
 
   end
 
-  context '#views' do
+  context '#types' do
 
-    it 'returns an Array of views used by the Items' do
-      @stream.views.should == [:articles, :beeps, :pages]
+    it 'returns an Array of the Items’ types' do
+      @stream.types.should == [:articles, :beeps, :pages]
     end
 
   end

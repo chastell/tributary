@@ -59,7 +59,7 @@ module Tributary class Item < OpenStruct
     @table[:title] or @body.scan(/\p{L}+/).first + '…'
   end
 
-  def view
+  def type
     File.dirname(@file).split('/').last.to_sym
   end
 

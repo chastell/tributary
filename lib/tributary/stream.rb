@@ -25,8 +25,8 @@ module Tributary class Stream
     published(filter).reverse[published(filter).reverse.index { |i| i.path == item.path } + 1] rescue nil
   end
 
-  def views
-    @items.map(&:view).uniq.sort
+  def types
+    @items.map(&:type).uniq.sort
   end
 
   private
