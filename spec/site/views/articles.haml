@@ -1,3 +1,4 @@
 %p a tributary article
+%h1= @item.title
 %p #{t.published} #{l @item.date.to_date, :full}
 = @item.body

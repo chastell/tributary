@@ -1,2 +1,22 @@
+article {
+  background: white;
+  border: 1px dashed black;
+  margin: auto;
+  padding: 1em;
+  width: 30em; }
+
+a {
+  color: inherit; }
+
 body {
-  font-family: Georgia; }
+  font-family: Georgia;
+  text-align: center; }
+
+h1 {
+  font-variant: small-caps; }
+
+li {
+  list-style: none; }
+
+ul {
+  padding: 0; }

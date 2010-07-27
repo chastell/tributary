@@ -11,40 +11,46 @@
     %meta{charset: 'UTF-8'}
     %title= @item.title or settings.sitename + "#{": #{@item.path}" if @item.path}"
   %body
-    %p
+    %h1
       %a{href: '/'}= settings.sitename
-    = yield
-    - if previous = @stream.previous(@item)
+    %article
+      = yield
+    %nav
       %p
-        #{t.previously}:
-        %a{href: previous.path}= previous.title
-    - if subsequent = @stream.subsequent(@item)
+        - previous   = @stream.previous(@item)
+        - subsequent = @stream.subsequent(@item)
+        - if previous
+          #{t.previously}:
+          %a{href: previous.path}= previous.title
+        - if previous and subsequent
+          \/
+        - if subsequent
+          #{t.subsequently}:
+          %a{href: subsequent.path}= subsequent.title
+    %footer
       %p
-        #{t.subsequently}:
-        %a{href: subsequent.path}= subsequent.title
-    %p
-      #{t.language}:
-      - {'en' => t.english, 'pl' => t.polish}.each do |lang, name|
-        - if settings.locale == lang
-          = name
+        #{t.language}:
+        - {'en' => t.english, 'pl' => t.polish}.each do |lang, name|
+          - if settings.locale == lang
+            = name
+          - else
+            %a{href: "/set?locale=#{lang}"}= name
+          |
+        - if settings.locale.nil?
+          = t.default
         - else
-          %a{href: "/set?locale=#{lang}"}= name
-        |
-      - if settings.locale.nil?
-        = t.default
-      - else
-        %a{href: '/set?locale'}= t.default
-    %p
-      #{t.content}:
-      - {'en' => t.english_only, 'pl' => t.polish_only}.each do |lang, name|
-        - if settings.lang_limit == [lang]
-          = name
+          %a{href: '/set?locale'}= t.default
+      %p
+        #{t.content}:
+        - {'en' => t.english_only, 'pl' => t.polish_only}.each do |lang, name|
+          - if settings.lang_limit == [lang]
+            = name
+          - else
+            %a{href: "/set?lang_limit=#{lang}"}= name
+          |
+        - if settings.lang_limit.nil?
+          = t.no_limit
         - else
-          %a{href: "/set?lang_limit=#{lang}"}= name
-        |
-      - if settings.lang_limit.nil?
-        = t.no_limit
-      - else
-        %a{href: '/set?lang_limit'}= t.no_limit
-    %p
-      %a{href: 'about'} designed by chastell in Mazovia
+          %a{href: '/set?lang_limit'}= t.no_limit
+      %p
+        %a{href: 'about'} designed by chastell in Mazovia
