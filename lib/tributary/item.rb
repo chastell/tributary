@@ -15,7 +15,7 @@ module Tributary class Item < OpenStruct
     when other.date         then 1
     else                         0
     end.nonzero? or
-    (path <=> other.path).nonzero? or
+    (other.path <=> path).nonzero? or
     case
     when lang       == App.locale then -1
     when other.lang == App.locale then 1

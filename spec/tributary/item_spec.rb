@@ -17,7 +17,7 @@ module Tributary describe Item do
   context '#<=>' do
 
     it 'sorts Items by date, date-less last' do
-      [@bi_en, @beep, @welcome, @about, @battle].sort.should == [@battle, @bi_en, @welcome, @about, @beep]
+      [@bi_en, @beep, @welcome, @about, @battle].sort.should == [@battle, @bi_en, @welcome, @beep, @about]
     end
 
     it 'sorts same-path Items by lang, based on App.locale' do
