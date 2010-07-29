@@ -8,6 +8,7 @@ module Tributary describe Stream do
     end
     @about   = Item.new 'spec/site/pages/about.md'
     @battle  = Item.new 'spec/site/articles/600.md'
+    @btl_en  = Item.new 'spec/site/articles/600.en.md'
     @bi_en   = Item.new 'spec/site/articles/bilingual.en.md'
     @bi_pl   = Item.new 'spec/site/articles/bilingual.pl.md'
     @dated   = Item.new 'spec/site/beeps/dated.md'
@@ -89,6 +90,10 @@ module Tributary describe Stream do
     it 'returns properly localised Items (if available)' do
       App.locale = 'pl'
       @stream.recent.should == [@polish, @english, @battle, @bi_pl, @dated, @welcome]
+      App.locale = 'en'
+      @stream.recent.should == [@polish, @english, @btl_en, @bi_en, @dated, @welcome]
+      App.locale = nil
+      @stream.recent.should == [@polish, @english, @battle, @bi_en, @dated, @welcome]
     end
 
     it 'returns lang_limited Items (if requested)' do
