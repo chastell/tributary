@@ -42,7 +42,7 @@ module Tributary class Stream
 
   def published filter = {}
     @published ||= {}
-    @published[[App.lang_limit, App.locale]] ||= items_ltd({published?: true}.merge filter)
+    @published[[App.lang_limit, App.locale, filter]] ||= items_ltd({published?: true}.merge filter)
   end
 
 end end

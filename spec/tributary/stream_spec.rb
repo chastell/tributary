@@ -76,6 +76,7 @@ module Tributary describe Stream do
     end
 
     it 'returns an Item previous to the given Item with the given type' do
+      @stream.previous(@bi_en).should == @dated
       @stream.previous(@bi_en, type: :articles).should == @welcome
     end
 
@@ -130,7 +131,8 @@ module Tributary describe Stream do
     end
 
     it 'returns an Item subsequent to the given Item with the given type' do
-      @stream.subsequent(@bi_en, type: :articles).should == @battle
+      @stream.subsequent(@welcome).should == @dated
+      @stream.subsequent(@welcome, type: :articles).should == @bi_en
     end
 
   end
