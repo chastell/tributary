@@ -48,7 +48,7 @@ module Tributary class Item < OpenStruct
   end
 
   def path
-    File.basename(@file, '.md').split('.').first
+    @path ||= File.basename(@file, '.md').split('.').first
   end
 
   def published?
