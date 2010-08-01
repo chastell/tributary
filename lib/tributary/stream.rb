@@ -1,7 +1,7 @@
 module Tributary class Stream
 
-  def initialize
-    @items = Dir["#{App.root}/*/*.md"].map { |file| Item.new file }
+  def initialize root = App.root
+    @items = Dir["#{root}/*/*.md"].map { |file| Item.new file }
   end
 
   def langs

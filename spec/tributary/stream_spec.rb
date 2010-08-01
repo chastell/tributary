@@ -3,9 +3,6 @@
 module Tributary describe Stream do
 
   before :all do
-    App.configure do |config|
-      config.set :root, 'spec/site'
-    end
     @about   = Item.new 'spec/site/pages/about.md'
     @battle  = Item.new 'spec/site/articles/600.md'
     @btl_en  = Item.new 'spec/site/articles/600.en.md'
@@ -21,7 +18,7 @@ module Tributary describe Stream do
   before :each do
     App.locale     = nil
     App.lang_limit = nil
-    @stream = Stream.new
+    @stream = Stream.new 'spec/site'
   end
 
   context '#langs' do
