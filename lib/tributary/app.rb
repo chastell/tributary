@@ -8,12 +8,13 @@ module Tributary class App < Sinatra::Base
     set :locale,     nil
     set :lang_limit, nil
     super
+    set :stream,     Tributary::Stream.new(root)
   end
 
   before do
     Tributary::App.locale     = session[:locale]
     Tributary::App.lang_limit = session[:lang_limit] && session[:lang_limit].split
-    @stream = Tributary::Stream.new
+    @stream = Tributary::App.stream
   end
 
   get '/' do
