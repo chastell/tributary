@@ -5,6 +5,7 @@ module Tributary class App < Sinatra::Base
   use Rack::Session::Cookie, expire_after: 60 * 60 * 24 * 365 * 7
 
   def self.configure *args, &block
+    set :cache,      true
     set :locale,     nil
     set :lang_limit, nil
     super
@@ -14,7 +15,7 @@ module Tributary class App < Sinatra::Base
   before do
     Tributary::App.locale     = session[:locale]
     Tributary::App.lang_limit = session[:lang_limit] && session[:lang_limit].split
-    @stream = Tributary::App.stream
+    @stream = Tributary::App.cache ? Tributary::App.stream : Tributary::Stream.new
   end
 
   get '/' do
