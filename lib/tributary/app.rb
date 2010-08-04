@@ -46,7 +46,7 @@ module Tributary class App < Sinatra::Base
     else
       @item = @stream.pick_item path
     end
-    haml @item.type
+    @item ? haml(@item.type) : 404
   end
 
 end end
