@@ -1,5 +1,5 @@
 require 'kramdown'
-require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/r18n'
 require 'yaml'
 
