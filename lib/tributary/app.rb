@@ -49,4 +49,9 @@ module Tributary class App < Sinatra::Base
     @item ? haml(@item.type) : 404
   end
 
+  error 404 do
+    @item = OpenStruct.new type: :error
+    haml @item.type
+  end
+
 end end

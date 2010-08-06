@@ -43,10 +43,11 @@ module Tributary describe App do
       last_response.body.should include 'tributary <em>welcome</em> article'
     end
 
-    it 'returns HTTP 404 Not Found on missing items' do
+    it 'returns HTTP 404 Not Found on missing items and renders the error template' do
       get '/foo'
       last_response.should_not be_ok
       last_response.status.should == 404
+      last_response.body.should include 'Quoth the Server'
     end
 
   end
