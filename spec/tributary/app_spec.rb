@@ -50,6 +50,12 @@ module Tributary describe App do
       last_response.body.should include 'Quoth the Server'
     end
 
+    it 'returns HTTP 404 Not Found on missing feeds' do
+      get '/foo.xml'
+      last_response.should_not be_ok
+      last_response.status.should == 404
+    end
+
   end
 
   context 'view settings' do
