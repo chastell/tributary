@@ -50,8 +50,10 @@ module Tributary class App < Sinatra::Base
   end
 
   error 404 do
-    @item = OpenStruct.new type: :error
-    haml @item.type
+    if response.content_type == 'text/html'
+      @item = OpenStruct.new type: :error
+      haml @item.type
+    end
   end
 
 end end
