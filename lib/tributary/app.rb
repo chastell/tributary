@@ -37,7 +37,7 @@ module Tributary class App < Sinatra::Base
 
   get '/:style.css' do |style|
     content_type 'text/css'
-    sass style.to_sym
+    File.exists?("#{App.views}/#{style}.sass") ? sass(style.to_sym) : 404
   end
 
   get '/:path' do |path|
