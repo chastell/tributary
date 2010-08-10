@@ -228,10 +228,11 @@ module Tributary describe App do
   context 'default configuration' do
 
     it 'has proper defaults' do
-      App.cache?.should     be_false
-      App.lang_limit.should be_nil
-      App.locale.should     be_nil
-      App.stream.should     be_a Stream
+      App.cache?.should      be_false
+      App.lang_limit.should  be_nil
+      App.locale.should      be_nil
+      App.settings.should == [:lang_limit, :locale]
+      App.stream.should      be_a Stream
     end
 
   end
