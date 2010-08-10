@@ -6,8 +6,8 @@ module Tributary class App < Sinatra::Base
 
   def self.configure *args, &block
     set :cache?,     environment == :production
-    set :locale,     nil
     set :lang_limit, nil
+    set :locale,     nil
     super
     set :stream,     Tributary::Stream.new(root)
   end

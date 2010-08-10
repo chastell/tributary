@@ -225,4 +225,15 @@ module Tributary describe App do
 
   end
 
+  context 'default configuration' do
+
+    it 'has proper defaults' do
+      App.cache?.should     be_false
+      App.lang_limit.should be_nil
+      App.locale.should     be_nil
+      App.stream.should     be_a Stream
+    end
+
+  end
+
 end end
