@@ -8,6 +8,10 @@ module Tributary describe App do
     App
   end
 
+  def session
+    Marshal.load rack_test_session.instance_variable_get(:@rack_mock_session).cookie_jar['rack.session'].unpack('m*').first
+  end
+
   before :all do
     App.configure do |config|
       config.set :author,   'Ary Tribut'
@@ -225,7 +229,7 @@ module Tributary describe App do
 
   end
 
-  context 'default configuration' do
+  context 'configuration' do
 
     it 'has proper defaults' do
       App.cache?.should      be_false
@@ -233,6 +237,13 @@ module Tributary describe App do
       App.locale.should      be_nil
       App.settings.should == [:lang_limit, :locale]
       App.stream.should      be_a Stream
+    end
+
+    it 'sets only whitelisted settings' do
+      get '/set?foo=bar&locale=en'
+      get '/'
+      session.should     have_key :locale
+      session.should_not have_key :foo
     end
 
   end

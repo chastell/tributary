@@ -25,7 +25,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/set' do
-    params.each { |key, value| session[key.to_sym] = value }
+    params.each { |key, value| session[key.to_sym] = value if App.settings.map(&:to_s).include? key }
     redirect request.referer
   end
 
