@@ -42,7 +42,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/:path' do |path|
-    if @stream.types.include? path.to_sym
+    if @stream.types.map(&:to_s).include? path
       @item = OpenStruct.new path: path, type: "#{path}.index".to_sym
     else
       @item = @stream.pick_item path
