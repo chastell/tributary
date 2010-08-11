@@ -12,7 +12,7 @@ module Tributary describe App do
     Marshal.load rack_test_session.instance_variable_get(:@rack_mock_session).cookie_jar['rack.session'].unpack('m*').first
   end
 
-  before :all do
+  before do
     App.configure do |config|
       config.set :author,   'Ary Tribut'
       config.set :root,     'spec/site'
@@ -236,7 +236,7 @@ module Tributary describe App do
       App.lang_limit.should  be_nil
       App.locale.should      be_nil
       App.settings.should == [:lang_limit, :locale]
-      App.stream.should      be_a Stream
+      App.stream.should      be_nil
     end
 
     it 'sets only whitelisted settings' do
@@ -244,6 +244,20 @@ module Tributary describe App do
       get '/'
       session.should     have_key :locale
       session.should_not have_key :foo
+    end
+
+  end
+
+  context 'stream caching' do
+
+    it 'caches the Stream in production by default' do
+      App.stub :production? => true
+      App.configure {}
+      App.stream.should be_a Stream
+    end
+
+    it 'does not cache the Stream in development/testing by default' do
+      App.stream.should be_nil
     end
 
   end
