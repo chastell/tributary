@@ -1,7 +1,10 @@
 module Tributary class Stream
 
-  def initialize root = App.root
+  def initialize root = App.root, plugins = []
     @items = Dir["#{root}/*/*.md"].map { |file| Item.new file }
+    plugins.each do |plugin|
+      @items.map! { |item| plugin.handle item }
+    end
   end
 
   def langs

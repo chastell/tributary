@@ -21,6 +21,16 @@ module Tributary describe Stream do
     @stream = Stream.new 'spec/site'
   end
 
+  context '#initialize' do
+
+    it 'filters the Items through the provided Plugins' do
+      plugged = Stream.new 'spec/site', [Plugins::Mnml.new]
+      @stream.recent.map(&:title).should == ['ten…', 'this…', '600th anniversary (intl.)', 'bilinguality', 'a…', 'welcome to tributary']
+      plugged.recent.map(&:title).should == ['tn…',  'ths…',  '600th nnvrsr (ntl.)',       'blnglt',       '…',  'wlcm t trbtr']
+    end
+
+  end
+
   context '#langs' do
 
     it 'returns an Array of langs used in the Items' do
