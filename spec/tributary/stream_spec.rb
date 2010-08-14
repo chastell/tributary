@@ -16,9 +16,8 @@ module Tributary describe Stream do
   end
 
   before :each do
-    App.locale     = nil
-    App.lang_limit = nil
-    @stream = Stream.new 'spec/site'
+    App.configure { |config| config.set :root, 'spec/site' }
+    @stream = Stream.new
   end
 
   context '#initialize' do
