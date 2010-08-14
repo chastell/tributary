@@ -23,7 +23,8 @@ module Tributary describe Stream do
   context '#initialize' do
 
     it 'filters the Items through the provided Plugins' do
-      plugged = Stream.new 'spec/site', [Plugins::Mnml.new]
+      App.plugins = [Plugins::Mnml.new]
+      plugged = Stream.new
       @stream.recent.map(&:title).should == ['ten…', 'this…', '600th anniversary (intl.)', 'bilinguality', 'a…', 'welcome to tributary']
       plugged.recent.map(&:title).should == ['tn…',  'ths…',  '600th nnvrsr (ntl.)',       'blnglt',       '…',  'wlcm t trbtr']
     end
