@@ -2,3 +2,4 @@
 --diff unified
 --require rack/test
 --require lib/tributary
+--require lib/tributary/plugins/dummy
