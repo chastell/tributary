@@ -252,7 +252,7 @@ module Tributary describe App do
   context 'stream caching' do
 
     it 'caches the Stream in production by default' do
-      App.stub :production? => true
+      App.stub production?: true
       App.configure {}
       App.stream.should be_a Stream
     end
