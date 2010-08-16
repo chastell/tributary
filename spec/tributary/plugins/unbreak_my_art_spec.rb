@@ -25,6 +25,12 @@ module Tributary describe Plugins::UnbreakMyArt do
       unbreak('I, Clau-Clau-Claudius').should == 'I, Clau-Clau-Claudius'
     end
 
+    it 'unbreaks bodies and titles' do
+      unbroken = Plugins::UnbreakMyArt.new.handle mock Item, title: 'about a ninja', body: 'and a pirate'
+      unbroken.title.should == 'about a ninja'
+      unbroken.body.should  == 'and a pirate'
+    end
+
   end
 
 end end
