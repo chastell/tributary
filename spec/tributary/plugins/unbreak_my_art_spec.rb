@@ -12,6 +12,11 @@ module Tributary describe Plugins::UnbreakMyArt do
       unbreak('give me a break').should == 'give me a break'
     end
 
+    it 'prevents line wrapping after line-starting single-letter words' do
+      unbreak('a fish!').should          == 'a fish!'
+      unbreak("this is\na fish!").should == "this is\na fish!"
+    end
+
   end
 
 end end
