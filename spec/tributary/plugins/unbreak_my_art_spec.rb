@@ -21,6 +21,10 @@ module Tributary describe Plugins::UnbreakMyArt do
       unbreak("<a href='http://en.wikipedia.org/wiki/Invisible_Pink_Unicorn'>I want to believe</a>").should == "<a href='http://en.wikipedia.org/wiki/Invisible_Pink_Unicorn'>I want to believe</a>"
     end
 
+    it 'allows for optional trailing punctuation' do
+      unbreak('I, Clau-Clau-Claudius').should == 'I, Clau-Clau-Claudius'
+    end
+
   end
 
 end end

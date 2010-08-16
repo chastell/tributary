@@ -5,7 +5,7 @@ module Tributary module Plugins class UnbreakMyArt
   def handle item
     unbroken = SimpleDelegator.new item
     def unbroken.body
-      super.gsub /((^|[^\p{L}<])\p{L}) /, '\1 '
+      super.gsub /((^|[^\p{L}<])\p{L}\p{P}?) /, '\1 '
     end
     unbroken
   end
