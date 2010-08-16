@@ -4,3 +4,4 @@
 --require lib/tributary
 --require lib/tributary/plugins/dummy
 --require lib/tributary/plugins/mnml
+--require lib/tributary/plugins/unbreak_my_art
