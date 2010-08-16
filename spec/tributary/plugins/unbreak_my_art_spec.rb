@@ -17,6 +17,10 @@ module Tributary describe Plugins::UnbreakMyArt do
       unbreak("this is\na fish!").should == "this is\na fish!"
     end
 
+    it 'does not alter one-letter HTML tags' do
+      unbreak("<a href='http://en.wikipedia.org/wiki/Invisible_Pink_Unicorn'>I want to believe</a>").should == "<a href='http://en.wikipedia.org/wiki/Invisible_Pink_Unicorn'>I want to believe</a>"
+    end
+
   end
 
 end end
