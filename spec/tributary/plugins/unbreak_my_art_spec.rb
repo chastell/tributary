@@ -2,12 +2,14 @@
 
 module Tributary describe Plugins::UnbreakMyArt do
 
+  def unbreak string
+    Plugins::UnbreakMyArt.new.handle(mock Item, body: string).body
+  end
+
   describe '#handle' do
 
     it 'prevents line wrapping after single-letter words' do
-      item = mock Item, body: 'give me a break'
-      unbroken = Plugins::UnbreakMyArt.new.handle item
-      unbroken.body.should == 'give me a break'
+      unbreak('give me a break').should == 'give me a break'
     end
 
   end
