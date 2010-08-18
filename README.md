@@ -25,6 +25,11 @@ Item types
 
 Every `Item` has a type, inherited from the `Item`’s position in the filesystem and returned by `Item#type`. When a given `Item` is requested over HTTP (via its `Item#path`) the template associated with its type is rendered; this allows rendering different HTML/CSS layouts for different content types (‘static’ pages vs blog posts vs photolog entries, for example).
 
+Plugins
+-------
+
+Plugins (put in the `App.plugins` `Array`) are objects which can be sent a `handle` method with an `Item` as a parameter and are expected to return the `Item` (so the calls to subsequent plugins are chainable). See the `Mnml` plugin for an example implementation utilising a `SimpleDelegator` to filter the given `Item`’s `body` and `title` methods.
+
 
 
 © MMX Piotr Szotkowski <chastell@chastell.net>, licensed under AGPL 3 (see LICENCE)
