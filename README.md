@@ -25,11 +25,16 @@ Item types
 
 Every `Item` has a type, inherited from the `Item`’s position in the filesystem and returned by `Item#type`. When a given `Item` is requested over HTTP (via its `Item#path`) the template associated with its type is rendered; this allows rendering different HTML/CSS layouts for different content types (‘static’ pages vs blog posts vs photolog entries, for example).
 
+Multilingual support
+--------------------
+
+Every `Item` can have multiple language versions (stored in `<type>/<path>.*.md` files, where `*` maps to the relevant locale) and/or a language-agnostic version (stored in the `<type>/<path>.md` file). When a given `Item` is requested (via the `http://…/<path>` URL) tributary chooses the language version most suitable for the request, based on either an explicit `locale` cookie sent along with the request or the `Accept-Language` HTTP header. If the preferred language version is not available, tributary falls back to the language-agnostic version or (if there’s no such version) to a language version that’s not explicitely filtered out by the `lang_limit` setting.
+
 Plugins
 -------
 
 Plugins (put in the `App.plugins` `Array`) are objects which can be sent a `handle` method with an `Item` as a parameter and are expected to return the `Item` (so the calls to subsequent plugins are chainable). See the `Mnml` plugin for an example implementation utilising a `SimpleDelegator` to filter the given `Item`’s `body` and `title` methods.
 
-
+---
 
 © MMX Piotr Szotkowski <chastell@chastell.net>, licensed under AGPL 3 (see LICENCE)
