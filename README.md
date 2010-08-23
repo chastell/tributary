@@ -25,6 +25,11 @@ Item types
 
 Every `Item` has a type, inherited from the `Item`’s position in the filesystem and returned by `Item#type`. When a given `Item` is requested over HTTP (via its `Item#path`) the template associated with its type is rendered; this allows rendering different HTML/CSS layouts for different content types (‘static’ pages vs blog posts vs photolog entries, for example).
 
+Stream
+------
+
+The `Stream` object contains all tributary `Item`s ordered by their publication date (if present) and can be queried to return a given number of the most recent `Item`s or an `Item` previous of (or subsequent to) a given `Item` (the returned `Item`(s) take into account the current `locale` and `lang_limit` settings). Every such query can additionally filter the `Stream` and for example request the subsequent `Item` that is also a photolog entry.
+
 Multilingual support
 --------------------
 
