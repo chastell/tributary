@@ -17,7 +17,7 @@ module Tributary class App < Sinatra::Base
   before do
     Tributary::App.locale     = session[:locale]
     Tributary::App.lang_limit = session[:lang_limit] && session[:lang_limit].split
-    @stream = Tributary::App.cache? ? Tributary::App.stream : Tributary::Stream.new
+    @stream = Tributary::App.stream || Tributary::Stream.new
   end
 
   get '/' do
