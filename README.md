@@ -49,6 +49,19 @@ Every `Item` can have multiple language versions (stored in `<type>/<path>.*.md`
 
 
 
+Configuration
+-------------
+
+Application-level configuration is stored right on the `App` object itself; see the example `config.ru`, which happens to serve the site used by specs:
+
+    Tributary::App.configure do |config|
+      config.set :author,   'Ary Tribut'
+      config.set :root,     'spec/site'
+      config.set :sitename, 'a tributary site'
+    end
+
+
+
 Plugins
 -------
 
