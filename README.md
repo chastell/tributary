@@ -62,6 +62,8 @@ Application-level configuration is stored right on the `App` object itself; see 
 
 User-level configuration is also stored on the `App` object and can be operated on by visiting the `/set?option=value` URLs – for example, setting the `locale` to English and `lang_limit` to English and Polish can be done by visiting the `/set?locale=en&lang_limit=en+pl` URL.
 
+The `settings` config option contains a list of settings that can be altered by visiting `/set` (and defaults to `[:lang_limit, :locale]`).
+
 
 
 Plugins
