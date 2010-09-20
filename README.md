@@ -29,7 +29,14 @@ The above example, if stored as `articles/welcome.md`, will be seen in tributary
 Item types
 ----------
 
-Every `Item` has a type, inherited from the `Item`’s position in the filesystem and returned by `Item#type`. When a given `Item` is requested over HTTP (via its `Item#path`) the template associated with its type is rendered; this allows rendering different HTML/CSS layouts for different content types (‘static’ pages vs blog posts vs photolog entries, for example).
+Every `Item` has a type, inherited from the `Item`’s position in the filesystem and returned by `Item#type`. When a given `Item` is requested over HTTP (via its `Item#path`) the view associated with its type is rendered; this allows rendering different HTML/CSS layouts for different content types (‘static’ pages vs blog posts vs photolog entries, for example).
+
+
+
+Views
+-----
+
+As mentioned above, every `Item` has an associated type, and this type defines the HTML view displayed when the given `Item` is requested; this allows for different rendering of static pages vs photolog entries. The views are written in [Haml](http://haml-lang.com/) and are located in `views/*.haml` files, with the file’s basename equal to the `Item`’s type.
 
 
 
