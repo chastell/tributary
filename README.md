@@ -36,7 +36,9 @@ Every `Item` has a type, inherited from the `Item`’s position in the filesyste
 Views
 -----
 
-As mentioned above, every `Item` has an associated type, and this type defines the HTML view displayed when the given `Item` is requested; this allows for different rendering of static pages vs photolog entries. The views are written in [Haml](http://haml-lang.com/) and are located in `views/*.haml` files, with the file’s basename equal to the `Item`’s type.
+As mentioned above, every `Item` has an associated type, and this type defines the HTML view displayed when the given `Item` is requested; this allows for different rendering of e.g. static pages vs photolog entries. The views are written in [Haml](http://haml-lang.com/) and are located in `views/*.haml` files, with the file’s basename equal to the `Item`’s type.
+
+Additionally, for every type the URL with that type’s name can be accessed (for example `http://…/pages`). In this case, the `views/*.index.haml` Haml view is rendered.
 
 
 
