@@ -38,7 +38,7 @@ Views
 
 As mentioned above, every `Item` has an associated type, and this type defines the HTML view displayed when the given `Item` is requested; this allows for different rendering of e.g. static pages vs photolog entries. The views are written in [Haml](http://haml-lang.com/) and are located in `views/*.haml` files, with the file’s basename equal to the `Item`’s type.
 
-Additionally, for every type the URL with that type’s name can be accessed (for example `http://…/pages`, assuming at least in one case `Item#type` returns `pages`). In this case, the relevant `views/*.index.haml` Haml view is rendered (so `views/pages.index.haml` in the aforementioned example).
+Additionally, for every type the URL with that type’s name can be accessed (for example `http://…/pages`, assuming at least in one case `Item#type` returns `pages`). In this case, the relevant `views/*.index.haml` Haml view is rendered (so `views/pages.index.haml` in the aforementioned example). These views can be used to create custom category-like pages – e.g., a page indexing all of your photographs that renders their thumbnails.
 
 
 
