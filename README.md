@@ -15,14 +15,14 @@ tributary aggregates a set of `Item`s, representing individual website contents 
 Items
 -----
 
-An `Item` is represented in the filesystem in the form of text file with Markdown body and a YAML header:
+An `Item` is represented in the filesystem in the form of text file with a Markdown body and a YAML header:
 
     date: 2010-07-15
     title: welcome to tributary
     
     tributary _welcome_ article
 
-The above example, if stored as `articles/welcome.md`, will be seen in tributary as an `Item` object with `Item#body` returning the kramdown-generated `<p>tributary <em>welcome</em> article</p>\n`, `Item#title` and `Item#date` returning YAML-parsed `welcome to tributary` and `2010-07-15 00:00:00 +0200`, while `Item#type` and `Item#path` will be inherited from the filesystem location and return `:articles` and `welcome`.
+The above example, if stored as `articles/welcome.md`, will be seen in tributary as an `Item` object with `Item#body` returning the kramdown-generated `<p>tributary <em>welcome</em> article</p>\n`, `Item#title` and `Item#date` returning YAML-parsed `welcome to tributary` and `2010-07-15 00:00:00 +0200`, while `Item#type` and `Item#path` will be inherited from the filesystem location and return `:articles` and `welcome`, respectively.
 
 
 
@@ -38,7 +38,7 @@ Views
 
 As mentioned above, every `Item` has an associated type, and this type defines the HTML view displayed when the given `Item` is requested; this allows for different rendering of e.g. static pages vs photolog entries. The views are written in [Haml](http://haml-lang.com/) and are located in `views/*.haml` files, with the file’s basename equal to the `Item`’s type.
 
-Additionally, for every type the URL with that type’s name can be accessed (for example `http://…/pages`, assuming at least in one case `Item#type` returns `pages`). In this case, the relevant `views/*.index.haml` Haml view is rendered (so `views/pages.index.haml` in the aforementioned example). These views can be used to create custom category-like pages – e.g., a page indexing all of your photographs that renders their thumbnails.
+Additionally, for every type the URL with that type’s name can be accessed (for example `http://…/pages`, assuming at least in one case `Item#type` returns `:pages`). In this case, the relevant `views/*.index.haml` Haml view is rendered (so `views/pages.index.haml` in the aforementioned example). These views can be used to create custom category-like pages – e.g., a page indexing all of your photographs that renders their thumbnails.
 
 
 
