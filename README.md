@@ -56,6 +56,8 @@ There are two session variables governing the user’s language preferences: `lo
 
 Every `Item` can have multiple language versions (stored in `<type>/<path>.*.md` files, where `*` maps to the relevant locale) and/or a language-agnostic version (stored in the `<type>/<path>.md` file). When a given `Item` is requested (via the `http://…/<path>` URL) tributary chooses the language version most suitable for the request, based on either an explicit `locale` cookie sent along with the request or the `Accept-Language` HTTP header. If the preferred language version is not available, tributary falls back to the language-agnostic version or (if there’s no such version) to a language version that’s not explicitely filtered out by the `lang_limit` setting.
 
+The site’s interface can be multilingualised using [R18n](http://r18n.rubyforge.org/) (via [R18n for Sinatra](http://r18n.rubyforge.org/sinatra.html)).
+
 
 
 Configuration
