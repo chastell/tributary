@@ -64,7 +64,7 @@ while the example `i18n/pl.yml` file contains
 
     recent_items: najnowsze
 
-– and so the `views/index.haml` view used by the spec site can call `t.recent_items` to get a properly localised string.
+– and so the `views/index.haml` view used by the spec site can call `t.recent_items` to get a properly localised string (note that `Tributary::App` already registers `Sinatra::R18n`, so nothing more that needs to be done).
 
 
 
