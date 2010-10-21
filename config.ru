@@ -1,4 +1,4 @@
-require 'lib/tributary'
+require './lib/tributary'
 
 Tributary::App.configure do |config|
   config.set :author,   'Ary Tribut'
