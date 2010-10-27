@@ -13,7 +13,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'kramdown'
   gem.add_dependency 'sinatra'
   gem.add_dependency 'sinatra-r18n'
-  gem.add_development_dependency 'diff-lcs'
   gem.add_development_dependency 'rack-test'
-  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'rspec', '>= 2'
 end
