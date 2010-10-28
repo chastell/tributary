@@ -232,12 +232,12 @@ module Tributary describe App do
   context 'configuration' do
 
     it 'has proper defaults' do
-      App.cache?.should      be_false
-      App.lang_limit.should  be_nil
-      App.locale.should      be_nil
-      App.plugins.should     be_empty
-      App.settings.should == [:lang_limit, :locale]
-      App.stream.should      be_nil
+      App.cache?.should     be_false
+      App.lang_limit.should be_nil
+      App.locale.should     be_nil
+      App.plugins.should    be_empty
+      App.user_prefs.should == [:lang_limit, :locale]
+      App.stream.should     be_nil
     end
 
     it 'sets only whitelisted settings' do

@@ -81,7 +81,7 @@ Application-level configuration is stored right on the `App` object itself; see 
 
 User-level configuration is also stored on the `App` object and can be operated on by visiting the `/set?option=value` URLs – for example, setting the `locale` to English and `lang_limit` to English and Polish can be done by visiting the `/set?locale=en&lang_limit=en+pl` URL.
 
-The `settings` config option contains a list of settings that can be altered by visiting `/set` (and defaults to `[:lang_limit, :locale]`) – changing this option (by setting it as above in `config.ru`, for example) allows the users to alter other (e.g., nonexistent by default) settings and see the changes reflected on the `App` object.
+The `user_prefs` config option contains a list of settings that can be altered by visiting `/set` (and defaults to `[:lang_limit, :locale]`) – changing this option (by setting it as above in `config.ru`, for example) allows the users to alter other (e.g., nonexistent by default) settings and see the changes reflected on the `App` object.
 
 The settings altered by the user are kept in the given user’s session and so persist between requests and visits.
 

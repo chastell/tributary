@@ -9,7 +9,7 @@ module Tributary class App < Sinatra::Base
     set :lang_limit, nil
     set :locale,     nil
     set :plugins,    []
-    set :settings,   [:lang_limit, :locale]
+    set :user_prefs, [:lang_limit, :locale]
     super
     set :stream,     cache? ? Tributary::Stream.new : nil
   end
@@ -26,7 +26,7 @@ module Tributary class App < Sinatra::Base
   end
 
   get '/set' do
-    params.each { |key, value| session[key.to_sym] = value if App.settings.map(&:to_s).include? key }
+    params.each { |key, value| session[key.to_sym] = value if App.user_prefs.map(&:to_s).include? key }
     redirect request.referer
   end
 
