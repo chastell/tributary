@@ -14,7 +14,7 @@ module Tributary describe Item do
     @welcome   = Item.new 'spec/site/articles/welcome.md'
   end
 
-  context '#<=>' do
+  describe '#<=>' do
 
     it 'sorts Items by date, date-less last' do
       [@bi_en, @beep, @welcome, @about, @battle].sort.should == [@battle, @bi_en, @welcome, @beep, @about]
@@ -34,7 +34,7 @@ module Tributary describe Item do
 
   end
 
-  context '#body' do
+  describe '#body' do
 
     it 'returns the given Item’s markdown-processed body' do
       @about.body.should   == "<p>tributary <em>about</em> page</p>\n\n<p>about this tributary install</p>\n"
@@ -43,7 +43,7 @@ module Tributary describe Item do
 
   end
 
-  context '#date' do
+  describe '#date' do
 
     it 'returns the given Item’s parsed Time' do
       @about.date.should   == nil
@@ -54,7 +54,7 @@ module Tributary describe Item do
 
   end
 
-  context '#eql?' do
+  describe '#eql?' do
 
     it 'returns predicate for sane use of Items as Hash keys' do
       @about.should be_eql Item.new('spec/site/pages/about.md')
@@ -62,7 +62,7 @@ module Tributary describe Item do
 
   end
 
-  context '#hash' do
+  describe '#hash' do
 
     it 'returns static value for sane use of Items as Hash keys' do
       @about.hash.should == Item.new('spec/site/pages/about.md').hash
@@ -70,7 +70,7 @@ module Tributary describe Item do
 
   end
 
-  context '#lang' do
+  describe '#lang' do
 
     it 'returns the Item’s language (if defined)' do
       @about.lang.should == nil
@@ -80,7 +80,7 @@ module Tributary describe Item do
 
   end
 
-  context '#path' do
+  describe '#path' do
 
     it 'returns the given Item’s path' do
       @about.path.should  == 'about'
@@ -91,7 +91,7 @@ module Tributary describe Item do
 
   end
 
-  context '#published?' do
+  describe '#published?' do
 
     it 'returns whether the given Item has a date in the past' do
       @about.should_not be_published
@@ -102,7 +102,7 @@ module Tributary describe Item do
 
   end
 
-  context '#title' do
+  describe '#title' do
 
     it 'returns the given Item’s YAML-specified title' do
       @about.title.should   == 'about tributary'
@@ -117,7 +117,7 @@ module Tributary describe Item do
 
   end
 
-  context '#type' do
+  describe '#type' do
 
     it 'returns the given Item’s type' do
       @about.type.should   == :pages

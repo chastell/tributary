@@ -2,7 +2,7 @@
 
 module Tributary describe Plugins::Mnml do
 
-  context '#handle' do
+  describe '#handle' do
 
     it 'minimalises the given Item’s title and body' do
       item = mock Item, body: 'a wonderful body', title: 'an interesting title'

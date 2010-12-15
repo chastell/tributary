@@ -20,7 +20,7 @@ module Tributary describe Stream do
     @stream = Stream.new
   end
 
-  context '#initialize' do
+  describe '#initialize' do
 
     it 'filters the Items through the provided Plugins' do
       App.plugins = [Plugins::Mnml.new]
@@ -31,7 +31,7 @@ module Tributary describe Stream do
 
   end
 
-  context '#langs' do
+  describe '#langs' do
 
     it 'returns an Array of langs used in the Items' do
       @stream.langs.should == ['en', 'pl']
@@ -39,7 +39,7 @@ module Tributary describe Stream do
 
   end
 
-  context '#pick_item' do
+  describe '#pick_item' do
 
     it 'returns the relevant Item based on the provided path' do
       @stream.pick_item('about').should        == @about
@@ -69,7 +69,7 @@ module Tributary describe Stream do
 
   end
 
-  context '#previous' do
+  describe '#previous' do
 
     it 'returns an Item previous to the given Item' do
       @stream.previous(@battle).should  == @bi_en
@@ -89,7 +89,7 @@ module Tributary describe Stream do
 
   end
 
-  context '#recent' do
+  describe '#recent' do
 
     it 'returns published Items, newest-first' do
       @stream.recent.should == [@polish, @english, @battle, @bi_en, @dated, @welcome]
@@ -124,7 +124,7 @@ module Tributary describe Stream do
 
   end
 
-  context '#subsequent' do
+  describe '#subsequent' do
 
     it 'returns an Item subsequent to the given Item' do
       @stream.subsequent(@welcome).should == @dated
@@ -144,7 +144,7 @@ module Tributary describe Stream do
 
   end
 
-  context '#types' do
+  describe '#types' do
 
     it 'returns an Array of the Items’ types' do
       @stream.types.should == [:articles, :beeps, :pages]

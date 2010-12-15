@@ -1,6 +1,6 @@
 module Tributary describe Plugins::Dummy do
 
-  context '#handle' do
+  describe '#handle' do
 
     it 'returns an unmodified Item' do
       item = mock Item
