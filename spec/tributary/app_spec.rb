@@ -105,36 +105,36 @@ module Tributary describe App do
     it 'renders the Atom feed' do
       get '/index.xml'
       last_response.should be_ok
-      last_response.headers['Content-Type'].should == 'application/atom+xml;charset=utf-8'
+      last_response.headers['Content-Type'].should == 'application/atom+xml'
       last_response.body.should == File.read('spec/fixtures/index.xml')
     end
 
     it 'renders per-locale Atom feeds' do
       get '/index.en.xml'
       last_response.should be_ok
-      last_response.headers['Content-Type'].should == 'application/atom+xml;charset=utf-8'
+      last_response.headers['Content-Type'].should == 'application/atom+xml'
       last_response.body.should == File.read('spec/fixtures/index.en.xml')
 
       get '/index.pl.xml'
       last_response.should be_ok
-      last_response.headers['Content-Type'].should == 'application/atom+xml;charset=utf-8'
+      last_response.headers['Content-Type'].should == 'application/atom+xml'
       last_response.body.should == File.read('spec/fixtures/index.pl.xml')
     end
 
     it 'renders lang_limit-ed Atom feeds' do
       get '/index.en.en.xml'
       last_response.should be_ok
-      last_response.headers['Content-Type'].should == 'application/atom+xml;charset=utf-8'
+      last_response.headers['Content-Type'].should == 'application/atom+xml'
       last_response.body.should == File.read('spec/fixtures/index.en.en.xml')
 
       get '/index.pl.pl.xml'
       last_response.should be_ok
-      last_response.headers['Content-Type'].should == 'application/atom+xml;charset=utf-8'
+      last_response.headers['Content-Type'].should == 'application/atom+xml'
       last_response.body.should == File.read('spec/fixtures/index.pl.pl.xml')
 
       get '/index.en.en+pl.xml'
       last_response.should be_ok
-      last_response.headers['Content-Type'].should == 'application/atom+xml;charset=utf-8'
+      last_response.headers['Content-Type'].should == 'application/atom+xml'
       last_response.body.should == File.read('spec/fixtures/index.en.en+pl.xml')
     end
 
