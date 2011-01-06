@@ -96,4 +96,4 @@ Plugins (put in the `App.plugins` `Array`) are objects which can be sent a `hand
 
 ---
 
-© MMX Piotr Szotkowski <chastell@chastell.net>, licensed under AGPL 3 (see LICENCE)
+© MMX-MMXI Piotr Szotkowski <chastell@chastell.net>, licensed under AGPL 3 (see LICENCE)
