@@ -166,7 +166,7 @@ module Tributary describe App do
     end
 
     it 'sets the right App settings and redirects properly' do
-      get '/set?locale=pl', {}, 'HTTP_REFERER' => '/bilingual'
+      get '/set?locale=pl', {}, 'HTTP_REFERER' => 'http://example.org/bilingual'
       last_response.location.should == 'http://example.org/bilingual'
       follow_redirect!
       App.locale.should == 'pl'
@@ -186,6 +186,11 @@ module Tributary describe App do
       get '/set?lang_limit'
       follow_redirect!
       App.lang_limit.should == nil
+    end
+
+    it 'doesn’t redirect outside of the current domain' do
+      get '/set', {}, 'HTTP_REFERER' => 'http://foo.bar/baz'
+      last_response.location.should == 'http://example.org/'
     end
 
     it 'localises the output based on locale (defaulting to English)' do

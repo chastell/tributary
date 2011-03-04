@@ -27,7 +27,7 @@ module Tributary class App < Sinatra::Base
 
   get '/set' do
     params.each { |key, value| session[key.to_sym] = value if App.user_prefs.map(&:to_s).include? key }
-    redirect request.referer
+    URI.parse(request.referer).host == request.host ? redirect(request.referer) : redirect('/')
   end
 
   get '/:feed.xml' do |feed|
