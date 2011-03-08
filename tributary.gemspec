@@ -1,3 +1,7 @@
+# FIXME: a RubyGems 1.6.1 and/or Ruby 1.9.2p180 workaround to
+# keep gem metadata Syck-built (and, thus, work on RubyGems/Heroku)
+YAML::ENGINE.yamler = 'syck'
+
 Gem::Specification.new do |gem|
   gem.name     = 'tributary'
   gem.version  = '0.0.2'
