@@ -1,21 +1,18 @@
 # encoding: UTF-8
 
-module Tributary module Plugins class UnbreakMyArt
+module Tributary module Plugins module UnbreakMyArt
 
-  def handle item
-    unbroken = SimpleDelegator.new item
-    def unbroken.body
-      Plugins::UnbreakMyArt.unbreak super
-    end
-    def unbroken.title
-      Plugins::UnbreakMyArt.unbreak super
-    end
-    unbroken
+  def body
+    unbreak super
+  end
+
+  def title
+    unbreak super
   end
 
   private
 
-  def self.unbreak string
+  def unbreak string
     string.gsub /((^|[^\p{L}<])\p{L}\p{P}?) /, '\1 '
   end
 
