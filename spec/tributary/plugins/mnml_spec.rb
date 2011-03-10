@@ -2,13 +2,13 @@
 
 module Tributary describe Plugins::Mnml do
 
-  describe '#handle' do
+  describe '#body, #title' do
 
-    it 'minimalises the given Item’s title and body' do
-      item = mock Item, body: 'a wonderful body', title: 'an interesting title'
-      mnml = Plugins::Mnml.new.handle item
-      mnml.body.should  == ' wndrfl bd'
-      mnml.title.should == 'n ntrstng ttl'
+    it 'returns the relevant minimalised part' do
+      file = Tempfile.open('Plugins::Mnml') { |f| f << "title: an interesting title\n\na wonderful body" }
+      item = Item.new(file.path).extend Plugins::Mnml
+      item.title.should == 'n ntrstng ttl'
+      item.body.should  == "<p> wndrfl bd</p>\n"
     end
 
   end

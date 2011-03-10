@@ -1,14 +1,11 @@
-module Tributary module Plugins class Mnml
+module Tributary module Plugins module Mnml
 
-  def handle item
-    mnml = SimpleDelegator.new item
-    def mnml.body
-      super.tr 'aeiouy', ''
-    end
-    def mnml.title
-      super.tr 'aeiouy', ''
-    end
-    mnml
+  def body
+    super.tr 'aeiouy', ''
+  end
+
+  def title
+    super.tr 'aeiouy', ''
   end
 
 end end end
