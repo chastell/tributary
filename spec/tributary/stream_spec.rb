@@ -23,6 +23,7 @@ module Tributary describe Stream do
   describe '#initialize' do
 
     it 'filters the Items through the provided Plugins' do
+      pending
       App.plugins = [Plugins::Mnml.new]
       plugged = Stream.new
       @stream.recent.map(&:title).should == ['ten…', 'this…', '600th anniversary (intl.)', 'bilinguality', 'a…', 'welcome to tributary']
