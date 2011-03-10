@@ -90,7 +90,7 @@ The settings altered by the user are kept in the given user’s session and so p
 Plugins
 -------
 
-Plugins (put in the `App.plugins` `Array`) are objects which can be sent a `handle` method with an `Item` as a parameter and are expected to return the `Item` (so the calls to subsequent plugins are chainable). See the `Mnml` plugin for an example implementation utilising a `SimpleDelegator` to filter the given `Item`’s `body` and `title` methods.
+Plugins (put in the `App.plugins` `Array`) are modules which get to extend `Item`s. See the `Mnml` plugin for an example implementation filtering the output of the `body` and `title` methods.
 
 
 
