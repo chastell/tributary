@@ -4,7 +4,7 @@ YAML::ENGINE.yamler = 'syck'
 
 Gem::Specification.new do |gem|
   gem.name     = 'tributary'
-  gem.version  = '0.0.3'
+  gem.version  = '0.0.4'
   gem.summary  = 'tributary: a tiny, toto-inspired blogging engine'
   gem.homepage = 'http://github.com/chastell/tributary'
   gem.author   = 'Piotr Szotkowski'
