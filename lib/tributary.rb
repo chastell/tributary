@@ -3,8 +3,6 @@ require 'sinatra/base'
 require 'sinatra/r18n'
 require 'yaml'
 
-module Tributary
-  autoload :App,    'tributary/app'
-  autoload :Item,   'tributary/item'
-  autoload :Stream, 'tributary/stream'
-end
+require_relative 'tributary/app'
+require_relative 'tributary/item'
+require_relative 'tributary/stream'
