@@ -5,13 +5,13 @@ module Tributary class App < Sinatra::Base
   use Rack::Session::Cookie, expire_after: 60 * 60 * 24 * 365 * 7
 
   def self.configure *args, &block
-    set :cache?,     production?
+    set :cache,      production?
     set :lang_limit, nil
     set :locale,     nil
     set :plugins,    []
     set :user_prefs, [:lang_limit, :locale]
     super
-    set :stream,     cache? ? Tributary::Stream.new : nil
+    set :stream,     cache ? Tributary::Stream.new : nil
   end
 
   before do
